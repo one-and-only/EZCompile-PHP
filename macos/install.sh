@@ -4,7 +4,7 @@ git checkout php-src
 function compilePHP {
     # Install All Dependencies
     echo Installing Dependencies
-    sudo brew install flex autoconf automake libtool re2c bison openssl curl enchant gd freetype mhash libiconv libsodium libjpeg pcre libxml2 argon2 tidy-html5 libzip
+    brew install flex autoconf automake libtool re2c bison openssl curl enchant gd freetype mhash libiconv libsodium libjpeg pcre libxml2 argon2 tidy-html5 libzip
     # Export Packages to the $PATH so They can be Found by the System
     sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> /Users/antonios/.bash_profile
     sudo source /Users/antonios/.bash_profile
