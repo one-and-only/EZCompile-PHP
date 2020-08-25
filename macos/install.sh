@@ -32,23 +32,15 @@ function compilePHP {
     echo Testing PHP
     make TEST_PHP_ARGS=-j"$JOBCOUNT" test
     echo Tested PHP
-    TESTCHECK=$(echo $?)
-    if [ "$TESTCHECK" = 0 ]; then
+    read -p 'The tests have been completed and you may or may not have had failures on some of them. This can sometimes be ignored with the latest builds, or may need extra attention. Would you like to continue with installation?[y/Y/n/N] ' ERRORRESPONSE
+    if [ "$ERRORRESPONSE" = y ] || [ "$ERRORRESPONSE" = Y ]; then
         echo Installing PHP-CLI
         make install
-        echo PHP-CLI has now been installed
+        echo Installed PHP-CLI
         exit 0
-    elif [ "$TESTCHECK" = 1 ]; then
-        read -p 'Some tests have not completed successfully. This can sometimes be ignored, but sometimes might need attention. Would you like to continue with installation?[y/Y/n/N] ' ERRORRESPONSE
-        if [ "$ERRORRESPONSE" = y ] || [ "$ERRORRESPONSE" = Y ]; then
-            echo Installing PHP-CLI
-            make install
-            echo Installed PHP-CLI
-            exit 0
-        elif [ "$ERRORRESPONSE" = n ] || [ "$ERRORRESPONSE" = N ]; then
-            echo cancelled installation
-            exit 130
-        fi
+    elif [ "$ERRORRESPONSE" = n ] || [ "$ERRORRESPONSE" = N ]; then
+        echo cancelled installation
+        exit 130
     fi
 }
 
