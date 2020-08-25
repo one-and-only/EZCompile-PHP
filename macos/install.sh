@@ -7,11 +7,12 @@ function compilePHP {
     echo Installing Dependencies
     brew install flex autoconf automake libtool re2c bison openssl curl enchant gd freetype mhash libiconv libsodium libjpeg pcre libxml2 argon2 tidy-html5 libzip
     # Export Packages to the $PATH so They can be Found by the System
-    echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
+    echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> /Users/antonios/.bash_profile
+    source /Users/antonios/.bash_profile
     echo Installed all Dependencies
     # Build the Configure Script
     echo Building configuration script
+    cd ..
     ./buildconf
     echo Built Configuration Script
     # Configure PHP Installation
