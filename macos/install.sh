@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo su
+sudo su &
 git checkout php-src
 
 function compilePHP {
