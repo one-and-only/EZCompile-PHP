@@ -5,7 +5,10 @@ git checkout php-src
 function compilePHP {
     # Install All Dependencies
     echo Installing Dependencies
-    brew install flex autoconf automake libtool re2c bison
+    brew install flex autoconf automake libtool re2c bison openssl curl enchant gd freetype mhash libiconv libsodium libjpeg pcre libxml2 argon2 tidy-html5 libzip
+    # Export Packages to the $PATH so They can be Found by the System
+    echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
     echo Installed all Dependencies
     # Build the Configure Script
     echo Building configuration script
@@ -13,7 +16,7 @@ function compilePHP {
     echo Built Configuration Script
     # Configure PHP Installation
     echo Configuring PHP
-    ./configure
+    ./configure --with-openssl --enable-bcmath --enable-calendar --with-curl --with-enchant --enable-ftp --enable-gd --with-webp --with-jpeg --with-freetype --with-mhash --with-iconv=/usr/local/Cellar/libiconv/1.16 --with-imap-ssl --enable-mbstring --enable-pdo --with-pdo-mysql=mysqlnd --enable-shmop --enable-soap --enable-sockets --with-sodium --with-password-argon2 --enable-sysvmsg --enable-sysvsem --enable-sysvshm --with-tidy --with-zip
     echo Configured PHP
     # Set the Job Count for make
     echo Setting job count for make
