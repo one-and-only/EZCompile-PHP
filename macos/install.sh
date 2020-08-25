@@ -37,9 +37,11 @@ function compilePHP {
         echo Installing PHP-CLI
         make install
         echo Installed PHP-CLI
+        git checkout master
         exit 0
     elif [ "$ERRORRESPONSE" = n ] || [ "$ERRORRESPONSE" = N ]; then
         echo cancelled installation
+        git checkout master
         exit 130
     fi
 }
@@ -57,6 +59,7 @@ elif [ "$BREWCHECK" = 127 ]; then
     compilePHP
 else
     echo There was an error checking for Homebrew support.
+    git checkout master
     exit 1
 fi
 git checkout master
