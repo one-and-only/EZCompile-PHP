@@ -65,6 +65,8 @@ function compilePHP {
         cd php-src-php-7.4.10RC1/ || exit
     elif [ "$PHPINSTALLVERSION" = latest-8.0 ]; then
         cd php-src-php-8.0.0beta2/ || exit
+    elif [ "$PHPINSTALLVERSION" = latest-master ]; then
+        cd ..
     fi
 
     sudo ./buildconf --force || exit
