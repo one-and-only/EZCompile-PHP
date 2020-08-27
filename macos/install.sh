@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Pre-install setup (install version choice, brew install, decompress files, cd into directory, etc.)
+# Add comment so the test pull request can be made
 function setup {
     # Install All Dependencies
     read -p 'Which PHP version would you like to install?[latest-7.1/latest-7.2/latest-7.3/default: latest-7.4/latest-8.0/latest-master/q (quit)] ' PHPINSTALLVERSION
