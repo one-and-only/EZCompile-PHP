@@ -2,7 +2,8 @@
 
 function compilePHP {
     # Install All Dependencies
-    read -pr 'Which PHP version would you like to install?[latest-7.1/latest-7.2/latest-7.3/latest-7.4/latest-8.0/latest-master] ' PHPINSTALLVERSION
+    read -p 'Which PHP version would you like to install?[latest-7.1/latest-7.2/latest-7.3/default: latest-7.4/latest-8.0/latest-master] ' PHPINSTALLVERSION
+    PHPINSTALLVERSION=${PHPINSTALLVERSION:-latest-7.4}
 
     if [ "$PHPINSTALLVERSION" = latest-7.1 ]; then
         cd ../releases/ || exit
@@ -21,7 +22,9 @@ function compilePHP {
         unzip php-src-php-7.4.10RC1.zip -d latest-7.4
         cd latest-7.4 || exit
     elif [ "$PHPINSTALLVERSION" = latest-8.0 ]; then
-        read -pr 'This a BETA PHP version. This software has been tested, but bugs and errors are bound to appear in this early stage. This should not be used in a production environment. Are you sure you want to install?[y/Y/n/N] ' INSTALLCHOICE
+        read -p 'This a BETA PHP version. This software has been tested, but bugs and errors are bound to appear in this early stage. This should not be used in a production environment. Are you sure you want to install?[y/Y/default: n/N] ' INSTALLCHOICE
+        INSTALLCHOICE=${INSTALLCHOICE:-n}
+
         if [ "$INSTALLCHOICE" = y ] || [ "$INSTALLCHOICE" = Y ]; then
             cd ../releases/ || exit
             unzip php-src-php-8.0.0beta2.zip -d latest-8.0
@@ -34,7 +37,8 @@ function compilePHP {
             exit 1
         fi
     elif [ "$PHPINSTALLVERSION" = latest-master ]; then
-        read -pr 'CAREFUL: This is a pre-release version and is in heavy development. Install this only if you want the latest bleeding-edge features. These may not have been tested thoroughly and should not be used in a production environment. Are you sure you want to install?[y/Y/n/N] ' INSTALLCHOICE
+        read -p 'CAREFUL: This is a pre-release version and is in heavy development. Install this only if you want the latest bleeding-edge features. These may not have been tested thoroughly and should not be used in a production environment. Are you sure you want to install?[y/Y/default: n/N] ' INSTALLCHOICE
+        INSTALLCHOICE=${INSTALLCHOICE:-n}
         if [ "$INSTALLCHOICE" = y ] || [ "$INSTALLCHOICE" = Y ]; then
             git checkout php-src
         elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
@@ -108,7 +112,8 @@ function compilePHP {
     fi  
     
     echo Tested PHP
-    read -pr 'The tests have been completed and you may or may not have had failures on some of them. This can sometimes be ignored with the latest builds, or may need extra attention. Would you like to continue with installation?[y/Y/n/N] ' ERRORRESPONSE
+    read -p 'The tests have been completed and you may or may not have had failures on some of them. This can sometimes be ignored with the latest builds, or may need extra attention. Would you like to continue with installation?[default: y/Y/n/N] ' ERRORRESPONSE
+    ERRORRESPONSE=${ERRORRESPONSE:-y}
     if [ "$ERRORRESPONSE" = y ] || [ "$ERRORRESPONSE" = Y ]; then
         echo Installing PHP-CLI
         sudo make install || exit
