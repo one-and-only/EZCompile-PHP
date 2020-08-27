@@ -2,7 +2,7 @@
 
 function compilePHP {
     # Install All Dependencies
-    read -p 'Which PHP version would you like to install?[latest-7.1/latest-7.2/latest-7.3/latest-7.4/latest-8.0/latest-master] ' PHPINSTALLVERSION
+    read -pr 'Which PHP version would you like to install?[latest-7.1/latest-7.2/latest-7.3/latest-7.4/latest-8.0/latest-master] ' PHPINSTALLVERSION
 
     if [ "$PHPINSTALLVERSION" = latest-7.1 ]; then
         cd ../releases/ || exit
@@ -21,7 +21,7 @@ function compilePHP {
         unzip php-src-php-7.4.10RC1.zip -d latest-7.4
         cd latest-7.4 || exit
     elif [ "$PHPINSTALLVERSION" = latest-8.0 ]; then
-        read -p 'This a BETA PHP version. This software has been tested, but bugs and errors are bound to appear in this early stage. This should not be used in a production environment. Are you sure you want to install?[y/Y/n/N] ' INSTALLCHOICE
+        read -pr 'This a BETA PHP version. This software has been tested, but bugs and errors are bound to appear in this early stage. This should not be used in a production environment. Are you sure you want to install?[y/Y/n/N] ' INSTALLCHOICE
         if [ "$INSTALLCHOICE" = y ] || [ "$INSTALLCHOICE" = Y ]; then
             cd ../releases/ || exit
             unzip php-src-php-8.0.0beta2.zip -d latest-8.0
@@ -34,7 +34,7 @@ function compilePHP {
             exit 1
         fi
     elif [ "$PHPINSTALLVERSION" = latest-master ]; then
-        read -p 'CAREFUL: This is a pre-release version and is in heavy development. Install this only if you want the latest bleeding-edge features. These may not have been tested thoroughly and should not be used in a production environment. Are you sure you want to install?[y/Y/n/N] ' INSTALLCHOICE
+        read -pr 'CAREFUL: This is a pre-release version and is in heavy development. Install this only if you want the latest bleeding-edge features. These may not have been tested thoroughly and should not be used in a production environment. Are you sure you want to install?[y/Y/n/N] ' INSTALLCHOICE
         if [ "$INSTALLCHOICE" = y ] || [ "$INSTALLCHOICE" = Y ]; then
             git checkout php-src
         elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
@@ -49,7 +49,7 @@ function compilePHP {
     echo Installing Dependencies
     brew install flex autoconf automake libtool re2c bison openssl curl enchant gd freetype mhash libiconv libsodium libjpeg pcre libxml2 argon2 tidy-html5 libzip
     # Export Packages to the $PATH so They can be Found by the System
-    sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
+    sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' | sudo tee ~/.bash_profile
     source ~/.bash_profile
     echo Installed all Dependencies
     # Build the Configure Script
@@ -108,7 +108,7 @@ function compilePHP {
     fi  
     
     echo Tested PHP
-    read -p 'The tests have been completed and you may or may not have had failures on some of them. This can sometimes be ignored with the latest builds, or may need extra attention. Would you like to continue with installation?[y/Y/n/N] ' ERRORRESPONSE
+    read -pr 'The tests have been completed and you may or may not have had failures on some of them. This can sometimes be ignored with the latest builds, or may need extra attention. Would you like to continue with installation?[y/Y/n/N] ' ERRORRESPONSE
     if [ "$ERRORRESPONSE" = y ] || [ "$ERRORRESPONSE" = Y ]; then
         echo Installing PHP-CLI
         sudo make install || exit
@@ -123,7 +123,7 @@ function compilePHP {
 }
 
     brew help
-    BREWCHECK=$(echo $?)
+    BREWCHECK=$?
 
 if [ "$BREWCHECK" = 0 ]; then
     compilePHP
