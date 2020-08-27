@@ -1,5 +1,5 @@
 # EZCompile-PHP
-## The EZ way to compile and install PHP on MacOS, Windows, and Linux. Status: pre-release, HEAVY DEVELOPMENT
+## The EZ way to compile and install PHP on MacOS, Windows, and Linux. Status: pre-release, installs PHP CLI (Multi-PHP Version, MacOS ONLY) HEAVY DEVELOPMENT
 Install Guide Coming Soon
 
 # PLEASE NOTE:
