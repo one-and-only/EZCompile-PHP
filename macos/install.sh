@@ -3,7 +3,7 @@
 # Pre-install setup (install version choice, brew install, decompress files, cd into directory, etc.)
 function setup {
     # Install All Dependencies
-    read -p 'Which PHP version would you like to install?[latest-7.1/latest-7.2/latest-7.3/default: latest-7.4/latest-8.0/latest-master] ' PHPINSTALLVERSION
+    read -p 'Which PHP version would you like to install?[latest-7.1/latest-7.2/latest-7.3/default: latest-7.4/latest-8.0/latest-master/q (quit)] ' PHPINSTALLVERSION
     PHPINSTALLVERSION=${PHPINSTALLVERSION:-latest-7.4}
 
     if [ "$PHPINSTALLVERSION" = latest-7.1 ]; then
@@ -32,10 +32,10 @@ function setup {
             cd latest-8.0 || exit
         elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
             echo cancelling installation
-            exit 130
+            setup
         else
             echo invalid argument, exiting...
-            exit 1
+            setup
         fi
     elif [ "$PHPINSTALLVERSION" = latest-master ]; then
         read -p 'CAREFUL: This is a pre-release version and is in heavy development. Install this only if you want the latest bleeding-edge features. These may not have been tested thoroughly and should not be used in a production environment. Are you sure you want to install?[y/Y/default: n/N] ' INSTALLCHOICE
@@ -44,11 +44,16 @@ function setup {
             git checkout php-src
         elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
             echo cancelling installation
-            exit 130
+            git chekout master
+            setup
         else
             echo invalid argument, exiting...
-            exit 1
+            git checkout master
+            setup
         fi
+    elif [ "$PHPINSTALLVERSION" = q ] || [ "$PHPINSTALLVERSION" = quit ]; then
+        echo cancelling installation
+        exit 130
     fi
 
     echo Installing Dependencies
@@ -131,12 +136,11 @@ function installCLI {
         echo Installing PHP-CLI
         sudo make install || exit
         echo Installed PHP-CLI
-        git checkout master
         exit 0
     elif [ "$ERRORRESPONSE" = n ] || [ "$ERRORRESPONSE" = N ]; then
         echo cancelled installation
         git checkout master
-        exit 130
+        setup
     fi
 }
 
