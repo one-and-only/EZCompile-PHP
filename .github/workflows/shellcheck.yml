@@ -1,0 +1,12 @@
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    on: pull_request
+    steps:
+      - name: Checkout code
+      - uses: actions/checkout@v1
+      - name: Run Shellcheck on Script Files
+        uses: azohra/shell-linter@latest
+        with:
+          path: "*.sh"
+          severity: "error"
