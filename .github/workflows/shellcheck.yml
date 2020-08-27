@@ -1,7 +1,9 @@
+on: pull_request
+
 jobs:
   lint:
     runs-on: ubuntu-latest
-    on: pull_request
+
     steps:
       - name: Checkout code
       - uses: actions/checkout@v1
