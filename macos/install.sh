@@ -1,6 +1,7 @@
 #!/bin/bash
 
-function compilePHP {
+# Pre-install setup (install version choice, brew install, decompress files, cd into directory, etc.)
+function setup {
     # Install All Dependencies
     read -p 'Which PHP version would you like to install?[latest-7.1/latest-7.2/latest-7.3/default: latest-7.4/latest-8.0/latest-master] ' PHPINSTALLVERSION
     PHPINSTALLVERSION=${PHPINSTALLVERSION:-latest-7.4}
@@ -56,8 +57,6 @@ function compilePHP {
     sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' | sudo tee ~/.bash_profile
     source ~/.bash_profile
     echo Installed all Dependencies
-    # Build the Configure Script
-    echo Building configuration script
 
     if [ "$PHPINSTALLVERSION" = latest-7.1 ]; then
         cd php-src-php-7.1.32/ || exit
@@ -72,7 +71,11 @@ function compilePHP {
     elif [ "$PHPINSTALLVERSION" = latest-master ]; then
         cd ..
     fi
+}
 
+# Configure PHP (./buildconf and ./configure)
+function configure {
+    echo Building configuration script
     sudo ./buildconf --force || exit
     echo Built Configuration Script
     # Configure PHP Installation
@@ -89,6 +92,10 @@ function compilePHP {
         sudo ./configure --with-openssl --enable-bcmath --enable-calendar --with-curl --enable-ftp --with-mhash --without-iconv --with-imap-ssl --enable-mbstring --enable-pdo --with-pdo-mysql=mysqlnd --enable-shmop --enable-soap --enable-sockets --enable-sysvmsg --enable-sysvsem --enable-sysvshm || exit
     fi
     echo Configured PHP
+}
+
+# Build PHP (make)
+function build {
     # Set the Job Count for make
     echo Setting job count for make
     THREADCOUNT=$(sysctl -n hw.ncpu)
@@ -98,8 +105,10 @@ function compilePHP {
     echo Building PHP
     sudo make -j"$JOBCOUNT" || exit
     echo Built PHP
+}
 
-    # Test PHP Commands and Test for Bugs
+# Test PHP (make test)
+function test {
     echo Testing PHP
     if [ "$PHPINSTALLVERSION" = latest-8.0 ] || [ "$PHPINSTALLVERSION" = latest-master ] || [ "$PHPINSTALLVERSION" = latest-7.4 ]; then
         sudo make TEST_PHP_ARGS=-j"$JOBCOUNT" test
@@ -112,6 +121,10 @@ function compilePHP {
     fi  
     
     echo Tested PHP
+}
+
+# Install PHP CLI (make install)
+function installCLI {
     read -p 'The tests have been completed and you may or may not have had failures on some of them. This can sometimes be ignored with the latest builds, or may need extra attention. Would you like to continue with installation?[default: y/Y/n/N] ' ERRORRESPONSE
     ERRORRESPONSE=${ERRORRESPONSE:-y}
     if [ "$ERRORRESPONSE" = y ] || [ "$ERRORRESPONSE" = Y ]; then
@@ -131,13 +144,21 @@ function compilePHP {
     BREWCHECK=$?
 
 if [ "$BREWCHECK" = 0 ]; then
-    compilePHP
+    setup
+    configure
+    build
+    test
+    installCLI
 elif [ "$BREWCHECK" = 127 ]; then
     # Install Homebew Since it was not Found
-    echo installing brew
+    echo installing Homebrew
     sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    echo brew has been installed
-    compilePHP
+    echo Homebrew has been installed
+    setup
+    configure
+    build
+    test
+    installCLI
 else
     echo There was an error checking for Homebrew support.
     git checkout master
