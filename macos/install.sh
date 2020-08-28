@@ -152,10 +152,76 @@ function setup {
     echo Installing Dependencies
     brew install flex autoconf automake libtool re2c bison openssl curl enchant gd freetype mhash libiconv libsodium libjpeg pcre libxml2 argon2 tidy-html5 libzip
     # Export Packages to the $PATH so They can be Found by the System
-    sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' | sudo tee ~/.bash_profile
-    source ~/.bash_profile
-    echo Installed all Dependencies
+    SHELL=$(echo ${SHELL})
+    if [ "$SHELL" = /bin/bash ]; then
 
+        echo exporting PATH variables, compiler flags, and pkg-config variables for dependencies
+        sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' | sudo tee ~/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+        export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+        echo 'export PATH="/usr/local/opt/curl/bin:$PATH"' | sudo tee ~/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/curl/lib"
+        export CPPFLAGS="-I/usr/local/opt/curl/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"
+
+        echo 'export PATH="/usr/local/opt/flex/bin:$PATH"' | sudo tee ~/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/flex/lib"
+        export CPPFLAGS="-I/usr/local/opt/flex/include"
+
+        echo 'export PATH="/usr/local/opt/libiconv/bin:$PATH"' | sudo tee ~/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/libiconv/lib"
+        export CPPFLAGS="-I/usr/local/opt/libiconv/include"
+
+        echo 'export PATH="/usr/local/opt/libxml2/bin:$PATH"' | sudo tee ~/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/libxml2/lib"
+        export CPPFLAGS="-I/usr/local/opt/libxml2/include"
+
+        echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' | sudo tee ~/.bash_profile
+		export LDFLAGS="-L/usr/local/opt/bison/lib"
+        echo exported PATH variables, compiler flags, and pkg-config variables for dependencies
+
+        echo linking dependencies
+        brew link autoconf automake libtool re2c enchant gd freetype mhash libsodium libjpeg pcre argon2 tidy-html5 libzip
+        echo linked dependencies
+
+        source ~/.bash_profile
+        echo Installed all Dependencies
+
+    elif [ "$SHELL" = /bin/zsh ]; then
+        
+        sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' | sudo tee ~/.profile
+        export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+        export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+        echo 'export PATH="/usr/local/opt/curl/bin:$PATH"' | sudo tee ~/.profile
+        export LDFLAGS="-L/usr/local/opt/curl/lib"
+        export CPPFLAGS="-I/usr/local/opt/curl/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"
+
+        echo 'export PATH="/usr/local/opt/flex/bin:$PATH"' | sudo tee ~/.profile
+        export LDFLAGS="-L/usr/local/opt/flex/lib"
+        export CPPFLAGS="-I/usr/local/opt/flex/include"
+
+        echo 'export PATH="/usr/local/opt/libiconv/bin:$PATH"' | sudo tee ~/.profile
+        export LDFLAGS="-L/usr/local/opt/libiconv/lib"
+        export CPPFLAGS="-I/usr/local/opt/libiconv/include"
+
+        echo 'export PATH="/usr/local/opt/libxml2/bin:$PATH"' | sudo tee ~/.profile
+        export LDFLAGS="-L/usr/local/opt/libxml2/lib"
+        export CPPFLAGS="-I/usr/local/opt/libxml2/include"
+
+        echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' | sudo tee ~/.profile
+		export LDFLAGS="-L/usr/local/opt/bison/lib"
+
+        echo linking dependencies
+        brew link autoconf automake libtool re2c enchant gd freetype2 mhash libsodium libjpeg pcre argon2 tidy-html5 libzip
+        echo linked dependencies
+        source ~/.profile
+        echo Installed all Dependencies
+    fi
     # Go into the right directory depending on PHP installation version
     if [ "$PHPINSTALLVERSION" = latest-7.1 ]; then
         cd php-src-php-7.1.32/ || exit
