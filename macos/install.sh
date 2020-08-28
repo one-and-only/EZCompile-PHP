@@ -9,28 +9,118 @@ function setup {
     # Setup Correct files depending on PHP installation version choice
     if [ "$PHPINSTALLVERSION" = latest-7.1 ]; then
         cd ../releases/ || exit
-        unzip php-src-php-7.1.32.zip -d latest-7.1
-        cd latest-7.1 || exit
+        ls latest-7.1
+        ISFOLDERPRESENT=$?
+        if [ "$ISFOLDERPRESENT" = 1 ]; then
+            unzip php-src-php-7.1.32.zip -d latest-7.1
+            cd latest-7.1 || exit
+        elif [ "$ISFOLDERPRESENT" = 0 ]; then
+            read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
+            FOLDERCHOICE=${FOLDERCHOICE:-n}
+            if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
+                sudo rm -r latest-7.1
+                unzip php-src-php-7.1.32.zip -d latest-7.1
+                cd latest-7.1 || exit
+            elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
+                echo cancelling installation
+                setup
+            else
+                echo invalid argument, exiting...
+                setup
+            fi
+        fi
+        
     elif [ "$PHPINSTALLVERSION" = latest-7.2 ]; then
         cd ../releases/ || exit
-        unzip php-src-php-7.2.33.zip -d latest-7.2
-        cd latest-7.2 || exit
+        ls latest-7.2
+        ISFOLDERPRESENT=$?
+        if [ "$ISFOLDERPRESENT" = 1 ]; then
+            unzip php-src-php-7.2.33.zip -d latest-7.2
+            cd latest-7.2 || exit
+        elif [ "$ISFOLDERPRESENT" = 0 ]; then
+            read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
+            FOLDERCHOICE=${FOLDERCHOICE:-n}
+            if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
+                sudo rm -r latest-7.2
+                unzip php-src-php-7.2.33.zip -d latest-7.2
+                cd latest-7.2 || exit
+            elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
+                echo cancelling installation
+                setup
+            else
+                echo invalid argument, exiting...
+                setup
+            fi
+        fi
     elif [ "$PHPINSTALLVERSION" = latest-7.3 ]; then
         cd ../releases/ || exit
-        unzip php-src-php-7.3.22RC1.zip -d latest-7.3
-        cd latest-7.3 || exit
+        ls latest-7.3
+        ISFOLDERPRESENT=$?
+        if [ "$ISFOLDERPRESENT" = 1 ]; then
+            unzip php-src-php-7.3.22RC1.zip -d latest-7.3
+            cd latest-7.3 || exit
+        elif [ "$ISFOLDERPRESENT" = 0 ]; then
+            read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
+            FOLDERCHOICE=${FOLDERCHOICE:-n}
+            if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
+                sudo rm -r latest-7.3
+                unzip php-src-php-7.3.22RC1.zip -d latest-7.3
+                cd latest-7.3 || exit
+            elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
+                echo cancelling installation
+                setup
+            else
+                echo invalid argument, exiting...
+                setup
+            fi
+        fi
     elif [ "$PHPINSTALLVERSION" = latest-7.4 ]; then
         cd ../releases/ || exit
-        unzip php-src-php-7.4.10RC1.zip -d latest-7.4
-        cd latest-7.4 || exit
+        ls latest-7.4
+        ISFOLDERPRESENT=$?
+        if [ "$ISFOLDERPRESENT" = 1 ]; then
+            unzip php-src-php-7.4.10RC1.zip -d latest-7.4
+            cd latest-7.4 || exit
+        elif [ "$ISFOLDERPRESENT" = 0 ]; then
+            read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
+            FOLDERCHOICE=${FOLDERCHOICE:-n}
+            if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
+                sudo rm -r latest-7.4
+                unzip php-src-php-7.4.10RC1.zip -d latest-7.4
+                cd latest-7.4 || exit
+            elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
+                echo cancelling installation
+                setup
+            else
+                echo invalid argument, exiting...
+                setup
+            fi
+        fi
     elif [ "$PHPINSTALLVERSION" = latest-8.0 ]; then
-        read -p 'This a BETA PHP version. This software has been tested, but bugs and errors are bound to appear in this early stage. This should not be used in a production environment. Are you sure you want to install?[y/Y/default: n/N] ' INSTALLCHOICE
+        read -p 'This a BETA PHP version and. This software has been tested, but bugs and errors are bound to appear in this early stage. This should not be used in a production environment. Are you sure you want to install?[y/Y/default: n/N] ' INSTALLCHOICE
         INSTALLCHOICE=${INSTALLCHOICE:-n}
 
         if [ "$INSTALLCHOICE" = y ] || [ "$INSTALLCHOICE" = Y ]; then
             cd ../releases/ || exit
-            unzip php-src-php-8.0.0beta2.zip -d latest-8.0
-            cd latest-8.0 || exit
+            ls latest-8.0
+            ISFOLDERPRESENT=$?
+            if [ "$ISFOLDERPRESENT" = 1 ]; then
+                unzip php-src-php-8.0.0beta2.zip -d latest-8.0
+                cd latest-8.0 || exit
+            elif [ "$ISFOLDERPRESENT" = 0 ]; then
+                read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
+                FOLDERCHOICE=${FOLDERCHOICE:-n}
+                if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
+                    sudo rm -r latest-8.0
+                    unzip php-src-php-8.0.0beta2.zip -d latest-8.0
+                    cd latest-8.0 || exit
+                elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
+                    echo cancelling installation
+                    setup
+                else
+                    echo invalid argument, exiting...
+                    setup
+                fi
         elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
             echo cancelling installation
             setup
@@ -55,6 +145,7 @@ function setup {
     elif [ "$PHPINSTALLVERSION" = q ] || [ "$PHPINSTALLVERSION" = quit ]; then
         echo cancelling installation
         exit 130
+    fi
     fi
 
     # Install dependencies using Homebrew
