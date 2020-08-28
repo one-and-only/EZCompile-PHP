@@ -10,5 +10,5 @@ jobs:
       - name: Run Shellcheck on Script Files
         uses: azohra/shell-linter@latest
         with:
-          path: "*.sh"
+          path: "macos/install.sh,debian/install.sh"
           severity: "error"
