@@ -158,33 +158,33 @@ function setup() {
                 echo invalid argument, exiting...
                 setup
             fi
-        elif [ "$PHPINSTALLVERSION" = latest-master ]; then
-            read -p 'CAREFUL: This is a pre-release version and is in heavy development. Install this only if you want the latest bleeding-edge features. These may not have been tested thoroughly and should not be used in a production environment. Are you sure you want to install?[y/Y/default: n/N] ' INSTALLCHOICE
-            INSTALLCHOICE=${INSTALLCHOICE:-n}
-            if [ "$INSTALLCHOICE" = y ] || [ "$INSTALLCHOICE" = Y ]; then
-                cd ../releases/ || exit
-                git clone https://github.com/php/php-src.git
-                cd php-src || exit
-            elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
-                echo cancelling installation
-                git chekout master
-                setup
-            else
-                echo invalid argument, exiting...
-                git checkout master
-                setup
-            fi
-        elif [ "$PHPINSTALLVERSION" = q ] || [ "$PHPINSTALLVERSION" = quit ]; then
-            echo cancelling installation
-            exit 130
         fi
+    elif [ "$PHPINSTALLVERSION" = latest-master ]; then
+        read -p 'CAREFUL: This is a pre-release version and is in heavy development. Install this only if you want the latest bleeding-edge features. These may not have been tested thoroughly and should not be used in a production environment. Are you sure you want to install?[y/Y/default: n/N] ' INSTALLCHOICE
+        INSTALLCHOICE=${INSTALLCHOICE:-n}
+        if [ "$INSTALLCHOICE" = y ] || [ "$INSTALLCHOICE" = Y ]; then
+            cd ../ || exit
+            git clone https://github.com/php/php-src.git
+            cd php-src || exit
+        elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
+            echo cancelling installation
+            git chekout master
+            setup
+        else
+            echo invalid argument, exiting...
+            git checkout master
+            setup
+        fi
+    elif [ "$PHPINSTALLVERSION" = q ] || [ "$PHPINSTALLVERSION" = quit ]; then
+        echo cancelling installation
+        exit 130
     fi
 
     # Install dependencies using Homebrew
     echo Installing Dependencies
     brew install flex autoconf automake libtool re2c bison openssl curl enchant gd freetype mhash libiconv libsodium libjpeg pcre libxml2 argon2 tidy-html5 libzip
     # Export Packages to the $PATH so They can be Found by the System
-    SHELL=$(echo ${SHELL})
+    SHELL=$(echo "${SHELL}")
     if [ "$SHELL" = /bin/bash ]; then
 
         echo exporting PATH variables, compiler flags, and pkg-config variables for dependencies
@@ -266,7 +266,7 @@ function setup() {
     elif [ "$PHPINSTALLVERSION" = latest-8.0 ]; then
         cd php-src-php-8.0.0beta2/ || exit
     elif [ "$PHPINSTALLVERSION" = latest-master ]; then
-        cd ..
+        cd .
     fi
 }
 
