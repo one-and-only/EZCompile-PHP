@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Pre-install setup (install version choice, brew install, decompress files, cd into directory, etc.)
-function setup {
+function setup() {
     # Install All Dependencies
     read -p 'Which PHP version would you like to install?[latest-7.1/latest-7.2/latest-7.3/default: latest-7.4/latest-8.0/latest-master/q (quit)] ' PHPINSTALLVERSION
     PHPINSTALLVERSION=${PHPINSTALLVERSION:-latest-7.4}
@@ -151,18 +151,21 @@ function setup {
                     echo invalid argument, exiting...
                     setup
                 fi
-        elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
-            echo cancelling installation
-            setup
-        else
-            echo invalid argument, exiting...
-            setup
+            elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
+                echo cancelling installation
+                setup
+            else
+                echo invalid argument, exiting...
+                setup
+            fi
         fi
     elif [ "$PHPINSTALLVERSION" = latest-master ]; then
         read -p 'CAREFUL: This is a pre-release version and is in heavy development. Install this only if you want the latest bleeding-edge features. These may not have been tested thoroughly and should not be used in a production environment. Are you sure you want to install?[y/Y/default: n/N] ' INSTALLCHOICE
         INSTALLCHOICE=${INSTALLCHOICE:-n}
         if [ "$INSTALLCHOICE" = y ] || [ "$INSTALLCHOICE" = Y ]; then
-            git checkout php-src
+            cd ../ || exit
+            git clone https://github.com/php/php-src.git
+            cd php-src || exit
         elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
             echo cancelling installation
             git chekout master
@@ -176,13 +179,12 @@ function setup {
         echo cancelling installation
         exit 130
     fi
-    fi
 
     # Install dependencies using Homebrew
     echo Installing Dependencies
     brew install flex autoconf automake libtool re2c bison openssl curl enchant gd freetype mhash libiconv libsodium libjpeg pcre libxml2 argon2 tidy-html5 libzip
     # Export Packages to the $PATH so They can be Found by the System
-    SHELL=$(echo ${SHELL})
+    SHELL=$(echo "${SHELL}")
     if [ "$SHELL" = /bin/bash ]; then
 
         echo exporting PATH variables, compiler flags, and pkg-config variables for dependencies
@@ -209,7 +211,7 @@ function setup {
         export CPPFLAGS="-I/usr/local/opt/libxml2/include"
 
         echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' | sudo tee ~/.bash_profile
-		export LDFLAGS="-L/usr/local/opt/bison/lib"
+        export LDFLAGS="-L/usr/local/opt/bison/lib"
         echo exported PATH variables, compiler flags, and pkg-config variables for dependencies
 
         echo linking dependencies
@@ -220,7 +222,7 @@ function setup {
         echo Installed all Dependencies
 
     elif [ "$SHELL" = /bin/zsh ]; then
-        
+
         sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' | sudo tee ~/.profile
         export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
         export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
@@ -244,7 +246,7 @@ function setup {
         export CPPFLAGS="-I/usr/local/opt/libxml2/include"
 
         echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' | sudo tee ~/.profile
-		export LDFLAGS="-L/usr/local/opt/bison/lib"
+        export LDFLAGS="-L/usr/local/opt/bison/lib"
 
         echo linking dependencies
         brew link autoconf automake libtool re2c enchant gd freetype2 mhash libsodium libjpeg pcre argon2 tidy-html5 libzip
@@ -264,12 +266,12 @@ function setup {
     elif [ "$PHPINSTALLVERSION" = latest-8.0 ]; then
         cd php-src-php-8.0.0beta2/ || exit
     elif [ "$PHPINSTALLVERSION" = latest-master ]; then
-        cd ..
+        cd .
     fi
 }
 
 # Configure PHP (./buildconf and ./configure)
-function configure {
+function configure() {
     echo Building configuration script
     # Build the configure script
     sudo ./buildconf --force || exit
@@ -292,12 +294,12 @@ function configure {
 }
 
 # Build PHP (make)
-function build {
+function build() {
     # Set the Job Count for make
     echo Setting job count for make
     # Set the make job count for the lowest buid time
     THREADCOUNT=$(sysctl -n hw.ncpu)
-    JOBCOUNT=$((THREADCOUNT+1))
+    JOBCOUNT=$((THREADCOUNT + 1))
     echo Set job count for make
     # Build PHP
     echo Building PHP
@@ -307,7 +309,7 @@ function build {
 }
 
 # Test PHP (make test)
-function test {
+function test() {
     echo Testing PHP
     # Test PHP per PHP version choice
     if [ "$PHPINSTALLVERSION" = latest-8.0 ] || [ "$PHPINSTALLVERSION" = latest-master ] || [ "$PHPINSTALLVERSION" = latest-7.4 ]; then
@@ -318,13 +320,13 @@ function test {
         sudo make test -j"$JOBCOUNT"
     elif [ "$PHPINSTALLVERSION" = latest-7.1 ]; then
         sudo make test -j"$JOBCOUNT"
-    fi  
-    
+    fi
+
     echo Tested PHP
 }
 
 # Install PHP CLI (make install)
-function installCLI {
+function installCLI() {
     # Ask the user if the PHP CLI should be installed or not
     read -p 'The tests have been completed and you may or may not have had failures on some of them. This can sometimes be ignored with the latest builds, or may need extra attention. Would you like to continue with installation?[default: y/Y/n/N] ' ERRORRESPONSE
     ERRORRESPONSE=${ERRORRESPONSE:-y}
@@ -342,8 +344,8 @@ function installCLI {
     fi
 }
 
-    brew help
-    BREWCHECK=$?
+brew help
+BREWCHECK=$?
 
 if [ "$BREWCHECK" = 0 ]; then
     # Install PHP CLI
