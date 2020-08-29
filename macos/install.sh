@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+
 # Pre-install setup (install version choice, brew install, decompress files, cd into directory, etc.)
 function setup() {
     # Install All Dependencies
