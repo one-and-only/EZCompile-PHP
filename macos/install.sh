@@ -8,71 +8,101 @@ function setup {
 
     # Setup Correct files depending on PHP installation version choice
     if [ "$PHPINSTALLVERSION" = latest-7.1 ]; then
-        cd ../releases/ || exit
-        ls latest-7.1
-        ISFOLDERPRESENT=$?
-        if [ "$ISFOLDERPRESENT" = 1 ]; then
-            unzip php-src-php-7.1.32.zip -d latest-7.1
-            cd latest-7.1 || exit
-        elif [ "$ISFOLDERPRESENT" = 0 ]; then
-            read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
-            FOLDERCHOICE=${FOLDERCHOICE:-n}
-            if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
-                sudo rm -r latest-7.1
+        read -p 'latest-7.1 is outdated and has been superseded by latest-7.2. Would you like to continue installation?[y/Y/default: n/N] ' OUTDATEDCHOICE
+        OUTDATEDCHOICE=${OUTDATEDCHOICE:-n}
+        if [ "$OUTDATEDCHOICE" = y ] || [ "$OUTDATEDCHOICE" = Y ]; then
+            cd ../releases/ || exit
+            ls latest-7.1
+            ISFOLDERPRESENT=$?
+            if [ "$ISFOLDERPRESENT" = 1 ]; then
                 unzip php-src-php-7.1.32.zip -d latest-7.1
                 cd latest-7.1 || exit
-            elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
-                echo cancelling installation
-                setup
-            else
-                echo invalid argument, exiting...
-                setup
+            elif [ "$ISFOLDERPRESENT" = 0 ]; then
+                read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
+                FOLDERCHOICE=${FOLDERCHOICE:-n}
+                if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
+                    sudo rm -r latest-7.1
+                    unzip php-src-php-7.1.32.zip -d latest-7.1
+                    cd latest-7.1 || exit
+                elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
+                    echo cancelling installation
+                    setup
+                else
+                    echo invalid argument, exiting...
+                    setup
+                fi
             fi
+        elif [ "$OUTDATEDCHOICE" = n ] || [ "$OUTDATEDCHOICE" = N ]; then
+            echo cancelling installation
+            setup
+        else
+            echo invalid argument, exiting...
+            setup
         fi
-        
+
     elif [ "$PHPINSTALLVERSION" = latest-7.2 ]; then
-        cd ../releases/ || exit
-        ls latest-7.2
-        ISFOLDERPRESENT=$?
-        if [ "$ISFOLDERPRESENT" = 1 ]; then
-            unzip php-src-php-7.2.33.zip -d latest-7.2
-            cd latest-7.2 || exit
-        elif [ "$ISFOLDERPRESENT" = 0 ]; then
-            read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
-            FOLDERCHOICE=${FOLDERCHOICE:-n}
-            if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
-                sudo rm -r latest-7.2
+        read -p 'latest-7.2 is outdated and has been superseded by latest-7.3. Would you like to continue installation?[y/Y/default: n/N] ' OUTDATEDCHOICE
+        OUTDATEDCHOICE=${OUTDATEDCHOICE:-n}
+        if [ "$OUTDATEDCHOICE" = y ] || [ "$OUTDATEDCHOICE" = Y ]; then
+            cd ../releases/ || exit
+            ls latest-7.2
+            ISFOLDERPRESENT=$?
+            if [ "$ISFOLDERPRESENT" = 1 ]; then
                 unzip php-src-php-7.2.33.zip -d latest-7.2
                 cd latest-7.2 || exit
-            elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
-                echo cancelling installation
-                setup
-            else
-                echo invalid argument, exiting...
-                setup
+            elif [ "$ISFOLDERPRESENT" = 0 ]; then
+                read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
+                FOLDERCHOICE=${FOLDERCHOICE:-n}
+                if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
+                    sudo rm -r latest-7.2
+                    unzip php-src-php-7.2.33.zip -d latest-7.2
+                    cd latest-7.2 || exit
+                elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
+                    echo cancelling installation
+                    setup
+                else
+                    echo invalid argument, exiting...
+                    setup
+                fi
             fi
+        elif [ "$OUTDATEDCHOICE" = n ] || [ "$OUTDATEDCHOICE" = N ]; then
+            echo cancelling installation
+            setup
+        else
+            echo invalid argument, exiting...
+            setup
         fi
     elif [ "$PHPINSTALLVERSION" = latest-7.3 ]; then
-        cd ../releases/ || exit
-        ls latest-7.3
-        ISFOLDERPRESENT=$?
-        if [ "$ISFOLDERPRESENT" = 1 ]; then
-            unzip php-src-php-7.3.22RC1.zip -d latest-7.3
-            cd latest-7.3 || exit
-        elif [ "$ISFOLDERPRESENT" = 0 ]; then
-            read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
-            FOLDERCHOICE=${FOLDERCHOICE:-n}
-            if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
-                sudo rm -r latest-7.3
+        read -p 'latest-7.3 is outdated and has been superseded by latest-7.4. Would you like to continue installation?[y/Y/default: n/N] ' OUTDATEDCHOICE
+        OUTDATEDCHOICE=${OUTDATEDCHOICE:-n}
+        if [ "$OUTDATEDCHOICE" = y ] || [ "$OUTDATEDCHOICE" = Y ]; then
+            cd ../releases/ || exit
+            ls latest-7.3
+            ISFOLDERPRESENT=$?
+            if [ "$ISFOLDERPRESENT" = 1 ]; then
                 unzip php-src-php-7.3.22RC1.zip -d latest-7.3
                 cd latest-7.3 || exit
-            elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
-                echo cancelling installation
-                setup
-            else
-                echo invalid argument, exiting...
-                setup
+            elif [ "$ISFOLDERPRESENT" = 0 ]; then
+                read -p 'There already is a folder with this version of PHP. Would you like to remove it?[default: n/N/y/Y] ' FOLDERCHOICE
+                FOLDERCHOICE=${FOLDERCHOICE:-n}
+                if [ "$FOLDERCHOICE" = y ] || [ "$FOLDERCHOICE" = Y ]; then
+                    sudo rm -r latest-7.3
+                    unzip php-src-php-7.3.22RC1.zip -d latest-7.3
+                    cd latest-7.3 || exit
+                elif [ "$FOLDERCHOICE" = n ] || [ "$FOLDERCHOICE" = N ]; then
+                    echo cancelling installation
+                    setup
+                else
+                    echo invalid argument, exiting...
+                    setup
+                fi
             fi
+        elif [ "$OUTDATEDCHOICE" = n ] || [ "$OUTDATEDCHOICE" = N ]; then
+            echo cancelling installation
+            setup
+        else
+            echo invalid argument, exiting...
+            setup
         fi
     elif [ "$PHPINSTALLVERSION" = latest-7.4 ]; then
         cd ../releases/ || exit
@@ -152,10 +182,76 @@ function setup {
     echo Installing Dependencies
     brew install flex autoconf automake libtool re2c bison openssl curl enchant gd freetype mhash libiconv libsodium libjpeg pcre libxml2 argon2 tidy-html5 libzip
     # Export Packages to the $PATH so They can be Found by the System
-    sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' | sudo tee ~/.bash_profile
-    source ~/.bash_profile
-    echo Installed all Dependencies
+    SHELL=$(echo ${SHELL})
+    if [ "$SHELL" = /bin/bash ]; then
 
+        echo exporting PATH variables, compiler flags, and pkg-config variables for dependencies
+        sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' | sudo tee ~/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+        export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+        echo 'export PATH="/usr/local/opt/curl/bin:$PATH"' | sudo tee ~/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/curl/lib"
+        export CPPFLAGS="-I/usr/local/opt/curl/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"
+
+        echo 'export PATH="/usr/local/opt/flex/bin:$PATH"' | sudo tee ~/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/flex/lib"
+        export CPPFLAGS="-I/usr/local/opt/flex/include"
+
+        echo 'export PATH="/usr/local/opt/libiconv/bin:$PATH"' | sudo tee ~/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/libiconv/lib"
+        export CPPFLAGS="-I/usr/local/opt/libiconv/include"
+
+        echo 'export PATH="/usr/local/opt/libxml2/bin:$PATH"' | sudo tee ~/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/libxml2/lib"
+        export CPPFLAGS="-I/usr/local/opt/libxml2/include"
+
+        echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' | sudo tee ~/.bash_profile
+		export LDFLAGS="-L/usr/local/opt/bison/lib"
+        echo exported PATH variables, compiler flags, and pkg-config variables for dependencies
+
+        echo linking dependencies
+        brew link autoconf automake libtool re2c enchant gd freetype mhash libsodium libjpeg pcre argon2 tidy-html5 libzip
+        echo linked dependencies
+
+        source ~/.bash_profile
+        echo Installed all Dependencies
+
+    elif [ "$SHELL" = /bin/zsh ]; then
+        
+        sudo echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' | sudo tee ~/.profile
+        export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+        export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+        echo 'export PATH="/usr/local/opt/curl/bin:$PATH"' | sudo tee ~/.profile
+        export LDFLAGS="-L/usr/local/opt/curl/lib"
+        export CPPFLAGS="-I/usr/local/opt/curl/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"
+
+        echo 'export PATH="/usr/local/opt/flex/bin:$PATH"' | sudo tee ~/.profile
+        export LDFLAGS="-L/usr/local/opt/flex/lib"
+        export CPPFLAGS="-I/usr/local/opt/flex/include"
+
+        echo 'export PATH="/usr/local/opt/libiconv/bin:$PATH"' | sudo tee ~/.profile
+        export LDFLAGS="-L/usr/local/opt/libiconv/lib"
+        export CPPFLAGS="-I/usr/local/opt/libiconv/include"
+
+        echo 'export PATH="/usr/local/opt/libxml2/bin:$PATH"' | sudo tee ~/.profile
+        export LDFLAGS="-L/usr/local/opt/libxml2/lib"
+        export CPPFLAGS="-I/usr/local/opt/libxml2/include"
+
+        echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' | sudo tee ~/.profile
+		export LDFLAGS="-L/usr/local/opt/bison/lib"
+
+        echo linking dependencies
+        brew link autoconf automake libtool re2c enchant gd freetype2 mhash libsodium libjpeg pcre argon2 tidy-html5 libzip
+        echo linked dependencies
+        source ~/.profile
+        echo Installed all Dependencies
+    fi
     # Go into the right directory depending on PHP installation version
     if [ "$PHPINSTALLVERSION" = latest-7.1 ]; then
         cd php-src-php-7.1.32/ || exit
