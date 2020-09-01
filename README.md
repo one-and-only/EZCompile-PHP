@@ -3,7 +3,7 @@
 Install Guide Coming Soon
 
 # PLEASE NOTE:
-### 1. Some PHP extensions may not be installed in all versions of the PHP CLI due to incompatibility or build errors. The PHP extensions that were removed from PHP 8 downwards are the following:
+### 1. Some PHP extensions may not be installed in all versions due to incompatibility or build errors. The PHP extensions that were removed from PHP 8 downwards are the following:
   * latest-7.4: ***enchant***
   * latest-7.3: ***enchant, iconv, TIDY***
   * latest-7.2: ***enchant, iconv, TIDY, GD, webp support, jpeg support, freetype, zip read/write support***
