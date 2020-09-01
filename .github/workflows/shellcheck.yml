@@ -11,7 +11,7 @@ jobs:
         uses: luizm/action-sh-checker@v0.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SHELLCHECK_OPTS: -e SC2164 SC2162 SC2016 SC1090 #exclude shellcheck warnings.
+          SHELLCHECK_OPTS: -e SC2164 SC2162 SC2016 SC1090
         with:
           sh_checker_comment: true
           sh_checker_shfmt_disable: true
