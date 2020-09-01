@@ -1,3 +1,4 @@
+---
 name: 'ShellCheck'
 on:
   - pull_request
@@ -6,10 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Run the sh-checker
-        uses: luizm/action-sh-checker@v0.1.4
+      - name: 'Run the ShellCheck'
+        uses: luizm/action-sh-checker@v0.1.7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SHELLCHECK_OPTS: -e SC2164 SC2162 SC2016 SC1090 # It is posible to exclude some shellcheck warnings.
+          SHELLCHECK_OPTS: -e SC2164,SC2162,SC2016,SC1090,SC1017,SC2116
         with:
           sh_checker_comment: true
+          sh_checker_shfmt_disable: true
