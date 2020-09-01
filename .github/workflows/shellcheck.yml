@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: 'Run the ShellCheck'
-        uses: luizm/action-sh-checker@v0.1.4
+        uses: luizm/action-sh-checker@v0.1.7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHELLCHECK_OPTS: -e SC2164 SC2162 SC2016 SC1090
