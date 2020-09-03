@@ -22,7 +22,7 @@
      1. Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
      1. To get the IP address of the MySQL container, just execute ```docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql8``` inside of Terminal while the container is running.
    1. To Stop the Docker Application, go to the directory that your Docker Application resides in, and then type ```docker compose stop```.
-   ## B. Windows 10 (Insider Build 17063+):
+   ## B. Windows 10 (Build 1803+):
    1. Navigate to the location of the Docker Desktop binary archives at ```windows/dockerDesktop/```. 
    1. Open the text file that contains the password for the archives and copy it.
    1. Go back to the aforementioned folder above and double click, or execute, ```dockerDesktopInstaller_.exe```.
