@@ -11,4 +11,4 @@ else
 fi
 
 cd ../dockerFiles || exit
-docker-compose up -d
+sudo docker-compose up -d
