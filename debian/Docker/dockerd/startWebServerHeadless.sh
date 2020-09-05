@@ -10,5 +10,7 @@ else
         echo The Docker Daemon is Already Running, No Need to Start!
 fi
 
+echo Starting Web Server
 cd ../dockerFiles || exit
 sudo docker-compose up -d
+echo Started Web Server

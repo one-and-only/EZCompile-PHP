@@ -10,8 +10,8 @@ else
         echo The Docker Daemon is Already Running, No Need to Start!
 fi
 
-echo Starting Web Server in Headless Mode
+echo Starting Web Server
 cd ../dockerFiles || exit
 sudo docker-compose up
-echo Started Web Server in Headless Mode
+echo Stopped Web Server
 exit 0
