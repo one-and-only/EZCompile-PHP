@@ -1,11 +1,13 @@
 #!/bin/bash
 
-if [ "$PIDOF" = : ]; then
+PIDOFDOCKER=$(pidof dockerd)
+
+if [ "$PIDOFDOCKER" = : ]; then
+        echo Starting Docker Daemon
         sudo dockerd &
-        exit 0
+        echo Started Docker Daemon
 else
-        echo The Docker Daemon is Already Running, no Need to Start!
-        exit 0
+        echo The Docker Daemon is Already Running, No Need to Start!
 fi
 
 cd ../dockerFiles || exit
