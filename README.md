@@ -1,6 +1,7 @@
 # EZCompile-PHP
 ## The EZ way to compile and install PHP on MacOS, Windows, and Linux. Status: pre-release, installs PHP CLI (latest-7.1-latest-master[including 8.0-betaX] Version, MacOS ONLY) and can setup a docker application for PHP-7.4.9, Apache-2.4.38, and MySQL-8.0.21 combined) HEAVY DEVELOPMENT
 
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/one-and-only/EZCompile-PHP?color=yellow&include_prereleases&label=latest)
 # How to Install PHP CLI (*macOS ONLY*):
    1. Open Terminal and navigate to ```[GITHUB-REPO-DIR]/macos/CLI/``` with ```[GITHUB-REPO-DIR]``` being the directory of this repository (```cd [GITHUB-REPO-DIR]/macos/CLI/```).
    1. Execute the install script that is inside the above directory by typing ```./install.sh```. This will install Homebrew if it not already installed, install all dependencies required for compiling the PHP CLI, compile the PHP CLI itself, test the build, and then install it. Do ***NOT*** run it with ```sudo ./install.sh``` even if you will be asked later on about your password. This is because Homebrew can't run as admin.
