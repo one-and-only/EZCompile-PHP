@@ -151,13 +151,13 @@ function setup() {
                     echo invalid argument, exiting...
                     setup
                 fi
-            elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
-                echo cancelling installation
-                setup
-            else
-                echo invalid argument, exiting...
-                setup
             fi
+        elif [ "$INSTALLCHOICE" = n ] || [ "$INSTALLCHOICE" = N ]; then
+            echo cancelling installation
+            setup
+        else
+            echo invalid argument, exiting...
+            setup
         fi
     elif [ "$PHPINSTALLVERSION" = latest-master ]; then
         read -p 'CAREFUL: This is a pre-release version and is in heavy development. Install this only if you want the latest bleeding-edge features. These may not have been tested thoroughly and should not be used in a production environment. Are you sure you want to install?[y/Y/default: n/N] ' INSTALLCHOICE
