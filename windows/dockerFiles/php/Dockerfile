@@ -1,4 +1,4 @@
-FROM php:7.4.9-apache
+FROM php:7.4.10-apache
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install openssl curl zlib1g-dev enchant libsodium-dev libzip-dev bzip2 libcurl4-openssl-dev libssl-dev libpng-dev libgmp-dev libxml2-dev libenchant-dev libc-client2007e-dev libc-client-dev libkrb5-dev libonig-dev libedit-dev libtidy-dev libxslt-dev libgd-dev -y
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl

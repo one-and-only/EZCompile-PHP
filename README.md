@@ -2,10 +2,18 @@
 ### The Easy way to compile and install PHP on MacOS, Windows, and Linux. Status: pre-release, installs PHP CLI (latest-7.1-latest-master[including 8.0-betaX] Version, MacOS and Debian ONLY) and can setup a docker application for PHP-7.4.9, Apache-2.4.38, and MySQL-8.0.21 combined) HEAVY DEVELOPMENT
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/one-and-only/EZCompile-PHP?color=yellow&include_prereleases&label=latest)
-# How to Install PHP CLI (*macOS ONLY*):
+# How to Install PHP CLI (*macOS and Debian ONLY*):
+### macOS:
    1. Open Terminal and navigate to ```[GITHUB-REPO-DIR]/macos/CLI/``` with ```[GITHUB-REPO-DIR]``` being the directory of this repository (```cd [GITHUB-REPO-DIR]/macos/CLI/```).
    1. Execute the install script that is inside the above directory by typing ```./install.sh```. This will install Homebrew if it not already installed, install all dependencies required for compiling the PHP CLI, compile the PHP CLI itself, test the build, and then install it. Do ***NOT*** run it with ```sudo ./install.sh``` even if you will be asked later on about your password. This is because Homebrew can't run as admin.
   
+      * You're able to choose the version of PHP you want to install between the latest releases of PHP 7.1, 7.2, 7.3, 7.4, 8.0-betaX, and the latest version of the master PHP branch.
+      * You will be prompted to choose a version at the beginning of the program. There are other prompts inside of the program, but those should be really self-explanatory.
+   1. After PHP CLI has been successfully installed, you can check that it has applied by executing ```php -v```. This will show you the PHP CLI version along with the build date and other information. The build version and date is what you need to pay attention to make sure it installed correctly. You're done!
+### Debian:
+   1. Open Terminal and navigate to ```[GITHUB-REPO-DIR]/debian/CLI/``` with ```[GITHUB-REPO-DIR]``` being the directory of this repository (```cd [GITHUB-REPO-DIR]/debian/CLI/```).
+   1. Execute the install script that is inside the above directory by typing ```./install.sh```. This will install all dependencies required to compile the PHP CLI using the Advanced Package Tool (APT), compile the PHP CLI itself, test the build, and then install it. If you so wish, you may run with ```sudo ./install.sh``` unlike macOS in order to get asked for your admin password once at the start, so you can leave it unattended longer.
+     
       * You're able to choose the version of PHP you want to install between the latest releases of PHP 7.1, 7.2, 7.3, 7.4, 8.0-betaX, and the latest version of the master PHP branch.
       * You will be prompted to choose a version at the beginning of the program. There are other prompts inside of the program, but those should be really self-explanatory.
    1. After PHP CLI has been successfully installed, you can check that it has applied by executing ```php -v```. This will show you the PHP CLI version along with the build date and other information. The build version and date is what you need to pay attention to make sure it installed correctly. You're done!
