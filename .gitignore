@@ -1,10 +1,10 @@
 .DS_Store
 # PHP CLI Release Folders
-releases/*/
+releases/*/*
 # My LAMP Stack Files
 macos/Docker/dockerFiles/mysql-8.0/php-latest-7.4/php/files/*
 macos/Docker/dockerFiles/mysql-5.6/php-latest-7.4/mysql/files/*
 macos/Docker/dockerFiles/mysql-5.7/php-latest-7.4/mysql/files/*
 macos/Docker/dockerFiles/mysql-8.0/php-latest-7.4/mysql/files/*
-macos/Docker/dockerFiles/mysql-5.6/php-latest-7.4/php/files/
-macos/Docker/dockerFiles/mysql-5.7/php-latest-7.4/php/files/
+macos/Docker/dockerFiles/mysql-5.6/php-latest-7.4/php/files/*
+macos/Docker/dockerFiles/mysql-5.7/php-latest-7.4/php/files/*
