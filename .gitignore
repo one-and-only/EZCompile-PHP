@@ -1,10 +1,31 @@
 .DS_Store
 # PHP CLI Release Folders
 releases/*/*
-# My LAMP Stack Files
+# My LAMP Stack Website and MySQL Files
 macos/Docker/dockerFiles/mysql-8.0/php-latest-7.4/php/files/*
 macos/Docker/dockerFiles/mysql-5.6/php-latest-7.4/mysql/files/*
 macos/Docker/dockerFiles/mysql-5.7/php-latest-7.4/mysql/files/*
 macos/Docker/dockerFiles/mysql-8.0/php-latest-7.4/mysql/files/*
 macos/Docker/dockerFiles/mysql-5.6/php-latest-7.4/php/files/*
 macos/Docker/dockerFiles/mysql-5.7/php-latest-7.4/php/files/*
+
+macos/Docker/dockerFiles/mysql-8.0/php-latest-7.3/php/files/*
+macos/Docker/dockerFiles/mysql-5.6/php-latest-7.3/mysql/files/*
+macos/Docker/dockerFiles/mysql-5.7/php-latest-7.3/mysql/files/*
+macos/Docker/dockerFiles/mysql-8.0/php-latest-7.3/mysql/files/*
+macos/Docker/dockerFiles/mysql-5.6/php-latest-7.3/php/files/*
+macos/Docker/dockerFiles/mysql-5.7/php-latest-7.4/php/files/*
+
+macos/Docker/dockerFiles/mysql-8.0/php-latest-7.2/php/files/*
+macos/Docker/dockerFiles/mysql-5.6/php-latest-7.2/mysql/files/*
+macos/Docker/dockerFiles/mysql-5.7/php-latest-7.2/mysql/files/*
+macos/Docker/dockerFiles/mysql-8.0/php-latest-7.2/mysql/files/*
+macos/Docker/dockerFiles/mysql-5.6/php-latest-7.2/php/files/*
+macos/Docker/dockerFiles/mysql-5.7/php-latest-7.2/php/files/*
+
+macos/Docker/dockerFiles/mysql-8.0/php-latest-8.0/php/files/*
+macos/Docker/dockerFiles/mysql-5.6/php-latest-8.0/mysql/files/*
+macos/Docker/dockerFiles/mysql-5.7/php-latest-8.0/mysql/files/*
+macos/Docker/dockerFiles/mysql-8.0/php-latest-8.0/mysql/files/*
+macos/Docker/dockerFiles/mysql-5.6/php-latest-8.0/php/files/*
+macos/Docker/dockerFiles/mysql-5.7/php-latest-8.0/php/files/*

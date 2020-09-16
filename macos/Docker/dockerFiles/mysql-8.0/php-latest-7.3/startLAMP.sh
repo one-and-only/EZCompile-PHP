@@ -28,13 +28,13 @@ function PHPSetup() {
 SQLSetup
 PHPSetup
 
-if [ ! "$(docker ps -q -f name=php74)" ]; then
-    if [ "$(docker ps -aq -f status=exited -f name=php74)" ]; then
+if [ ! "$(docker ps -q -f name=php73)" ]; then
+    if [ "$(docker ps -aq -f status=exited -f name=php73)" ]; then
         # cleanup
-        docker rm php74
+        docker rm php73
     fi
     # run your container
-    docker run -d -p 80:80 -p 443:443 --volume "$APACHEFOLDERLOCATION":/var/www/html/ --name php74 frostedflakez/php-mysql-webserver:0.9-beta.3-php-latest-7.4
+    docker run -d -p 80:80 -p 443:443 --volume "$APACHEFOLDERLOCATION":/var/www/html/ --name php73 frostedflakez/php-mysql-webserver:0.9-beta.3-php-latest-7.3
 fi
 
 if [ ! "$(docker ps -q -f name=mysql80)" ]; then
