@@ -9,10 +9,10 @@ function PHPSetup() {
     ls "$APACHEFOLDERLOCATION"
     ISAPACHEFOLDERPRESENT=$?
     if [ "$APACHEFOLDERLOCATION" = : ]; then
-        echo -e "${YELLOW}The path of the PHP website files folder cannot be empty. Please choose a folder.${NC}"
+        echo -e """${YELLOW}""The path of the PHP website files folder cannot be empty. Please choose a folder.${NC}"
         PHPSetup
     elif [ "$ISAPACHEFOLDERPRESENT" = 1 ]; then
-        echo -e "$APACHEFOLDERLOCATION" ${RED}does not exist, please choose another folder.${NC}
+        echo -e "$APACHEFOLDERLOCATION" "${RED}"does not exist, please choose another folder."${NC}"
         PHPSetup
     fi
 }
