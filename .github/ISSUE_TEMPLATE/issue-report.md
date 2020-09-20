@@ -2,7 +2,7 @@
 
 name: Issue Report
 
-about: File an Issue to Help Us Improve
+about: File Any Issues That Are Not Perceived as Bugs
 
 title: 'Issue: '
 
