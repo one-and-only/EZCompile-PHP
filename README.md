@@ -99,7 +99,7 @@
 21. To Stop the Docker Application, go to the directory that your Docker Application resides in, and then type `docker compose stop`.
 
 22. Done!
-    ## C. Debian-Based Linux Distributions (Debian, Ubuntu, Pop_OS!, etc.):
+    ## C. Debian-Based Linux Distributions (Debian, Ubuntu, Pop_OS!, etc.)
 
 23. Coming Soon!
 
@@ -107,7 +107,7 @@
 
 * * *
 
-### 1. Some PHP extensions may not be installed in all versions of the PHP CLI due to incompatibility or build errors. The PHP extensions that were removed from PHP 8 downwards are the following:
+### 1. Some PHP extensions may not be installed in all versions of the PHP CLI due to incompatibility or build errors. The PHP extensions that were removed from PHP 8 downwards are the following
 
 -   latest-7.4: **_enchant_**
 -   latest-7.3: **_enchant, iconv, TIDY_**

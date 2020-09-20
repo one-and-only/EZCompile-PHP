@@ -12,10 +12,13 @@ assignees: one-and-only
 
 * * *
 
-**Describe the bug**
+## Describe the bug
+
 A clear and concise description of what the bug is.
 
-**To Reproduce**
+# 
+
+## To Reproduce
 
 Steps to reproduce the behavior:
 
@@ -24,11 +27,12 @@ Steps to reproduce the behavior:
 3.  Type `.....`
 4.  See an error
 
-**Expected behavior**
+## Expected behavior
 
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
+## Screenshots
+
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
@@ -37,6 +41,6 @@ If applicable, add screenshots to help explain your problem.
 -   Terminal Used: (e.g. `macOS Terminal`, `iTerm 2`, `Windows PowerShell`)
 -   Script Version (e.g. `0.9-beta.3`)
 
-**Additional context**
+## Additional context
 
 Add any other context about the problem here.
