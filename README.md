@@ -2,9 +2,11 @@
 
 ## 
 
-### The Easy way to compile and install PHP on MacOS, Windows, and Linux. Status: pre-release, installs PHP CLI (latest-7.1-latest-master[including 8.0-betaX] Version, MacOS and Debian ONLY) and can setup a docker application for PHP-7.4.9, Apache-2.4.38, and MySQL-8.0.21 combined) HEAVY DEVELOPMENT
+### The Easy way to compile and install PHP on MacOS, Windows, and Linux.
 
-# 
+### Status: pre-release, HEAVY DEVELOPMENT
+
+### Installs: PHP CLI (latest-7.1-latest-master (including 8.0-betaX) Version, MacOS and Debian ONLY) and can setup a Docker Application for PHP-7.4.9, Apache-2.4.38, and MySQL-8.0.21 combined)
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/one-and-only/EZCompile-PHP?color=yellow&include_prereleases&label=latest)
 
@@ -63,7 +65,7 @@
     3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql8` inside of Terminal while the container is running.
 
 8.  To Stop the Docker Application, go to the directory that your Docker Application resides in, and then type `docker compose stop`.
-    ## B. Windows 10 (Build 1803+):
+    ## B. Windows 10 (Build 1803+)
 
 9.  Navigate to the location of the Docker Desktop binary archives at `windows/dockerDesktop/`. 
 
