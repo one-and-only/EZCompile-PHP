@@ -4,7 +4,7 @@
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/one-and-only/EZCompile-PHP?color=yellow&include_prereleases&label=latest)
 
-# How to Install PHP CLI (_macOS and Debian ONLY_):
+# How to Install PHP CLI (_macOS and Debian ONLY_)
 
 ### macOS:
 
@@ -18,10 +18,12 @@
 ### Debian:
 
 1.  Open Terminal and navigate to `[GITHUB-REPO-DIR]/debian/CLI/` with `[GITHUB-REPO-DIR]` being the directory of this repository (`cd [GITHUB-REPO-DIR]/debian/CLI/`).
+
 2.  Execute the install script that is inside the above directory by typing `./install.sh`. This will install all dependencies required to compile the PHP CLI using the Advanced Package Tool (APT), compile the PHP CLI itself, test the build, and then install it. If you so wish, you may run with `sudo ./install.sh` unlike macOS in order to get asked for your admin password once at the start, so you can leave it unattended longer.
 
     -   You're able to choose the version of PHP you want to install between the latest releases of PHP 7.1, 7.2, 7.3, 7.4, 8.0-betaX, and the latest version of the master PHP branch.
     -   You will be prompted to choose a version at the beginning of the program. There are other prompts inside of the program, but those should be really self-explanatory.
+
 3.  After PHP CLI has been successfully installed, you can check that it has applied by executing `php -v`. This will show you the PHP CLI version along with the build date and other information. The build version and date is what you need to pay attention to make sure it installed correctly. You're done!
 
 # Installing the Docker Web Server Application (_All Major OSes_):
@@ -29,40 +31,70 @@
 ## A. macOS (10.13+ [High Sierra+]):
 
 1.  To install Docker Desktop by navigating to `[GITHUB-REPO-DIR]/macos/Docker/dockerDesktop/` with `[GITHUB-REPO-DIR]` being the directory of this repository (`cd [GITHUB-REPO-DIR]/macos/Docker/dockerDesktop/`).
-2.  Now, install Docker Desktop by simply executing `installDockerDesktop.sh`. You may be asked for your admin password depending on your installation environment. 
+
+2.  Now, install Docker Desktop by simply executing `installDockerDesktop.sh`. You may be asked for your admin password depending on your installation environment.
+
 3.  After installation is complete, you can launch Docker Desktop by doubl-clicking _Docker.app_ in the applications folder.
+
 4.  Now that docker is installed, open Terminal
+
 5.  Navigate to `[GITHUB-REPO-DIR]/macos/Docker/dockerFiles/`
+
 6.  Once there, you can simply type `docker compose up`. This will make sure that PHP, all of its extensions, Apache, and MySQL are all installed properly. If you so choose, you can close the application using _CTRL_ + _C_ in the Terminal where the application is open. After the initial install, you can use `docker compose up -d`. This will run the application detached, meaning it will run in the background. You can stop the container
+
 7.  All of your files used for a website will be stored under `[GITHUB-REPO-DIR]/macos/Docker/dockerFiles/php/`. You can make a simple _index.php_ file and whatever code you put in there will get processed by Apache. If you have an _index.php_ or _index.html_ file, you can access the website by typing `localhost` into your browser. Any other file name can be accessed from the browser by typing `localhost/[fileName.extension]` where `[filePrefix.extension]` is the full file name including the extension.
+
     -   Accessing MySQL through PDO:
+
     1.  I would recommend a database connection file (I'll call it _dbconn.php_)
+
     2.  Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
+
     3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql8` inside of Terminal while the container is running.
+
 8.  To Stop the Docker Application, go to the directory that your Docker Application resides in, and then type `docker compose stop`.
     ## B. Windows 10 (Build 1803+):
+
 9.  Navigate to the location of the Docker Desktop binary archives at `windows/dockerDesktop/`. 
+
 10. Open the text file that contains the password for the archives and copy it.
+
 11. Go back to the aforementioned folder above and double click, or execute, `dockerDesktopInstaller_.exe`.
+
 12. When prompted, paste the password that you just copied into the text field and click OK. The archive should now start extracting.
+
 13. After the archive has been fully extracted, execute the output file by double-clicking on it. The installation should now begin.
+
 14. When prompted, restart your computer
+
 15. After the computer restart and Docker starts, it will prompt you to install the WSL2 linux kernel. Install it and restart docker when prompted.
+
 16. When docker has restarted, docker should be installed and available for use.
+
 17. Now that docker is installed, open PowerShell (**_NOT_** Command Prompt)
+
 18. Navigate to `[GITHUB-REPO-DIR]/windows/dockerFiles/`
+
 19. Once there, you can simply type `docker compose up`. This will make sure that PHP, all of its extensions, Apache, and MySQL are all installed properly. If you so choose, you can close the application using _CTRL_ + _C_ in the Terminal where the application is open. After the initial install, you can use `docker compose up -d`. This will run the application detached, meaning it will run in the background. You can stop the container
+
 20. All of your files used for a website will be stored under `[GITHUB-REPO-DIR]/windows/dockerFiles/php/`. You can make a simple _index.php_ file and whatever code you put in there will get processed by Apache. If you have an _index.php_ or _index.html_ file, you can access the website by typing `localhost` into your browser. Any other file name can be accessed from the browser by typing `localhost/[fileName.extension]` where `[filePrefix.extension]` is the full file name including the extension.
+
     -   Accessing MySQL through PDO:
+
     1.  I would recommend a database connection file (I'll call it _dbconn.php_)
+
     2.  Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
+
     3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql8` inside of PowerShell while the container is running.
+
 21. To Stop the Docker Application, go to the directory that your Docker Application resides in, and then type `docker compose stop`.
+
 22. Done!
     ## C. Debian-Based Linux Distributions (Debian, Ubuntu, Pop_OS!, etc.):
+
 23. Coming Soon!
 
-# PLEASE NOTE:
+# PLEASE NOTE
 
 ### 1. Some PHP extensions may not be installed in all versions of the PHP CLI due to incompatibility or build errors. The PHP extensions that were removed from PHP 8 downwards are the following:
 
