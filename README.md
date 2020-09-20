@@ -60,7 +60,6 @@
 
     1.  I would recommend a database connection file (I'll call it _dbconn.php_)
     2.  Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
-
     3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql8` inside of Terminal while the container is running.
 
 8.  To Stop the Docker Application, go to the directory that your Docker Application resides in, and then type `docker compose stop`.

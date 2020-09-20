@@ -21,9 +21,7 @@ Steps to reproduce the behavior:
 
 1.  Go to `...`
 2.  Click on `....`
-
 3.  Type `.....`
-
 4.  See an error
 
 **Expected behavior**
