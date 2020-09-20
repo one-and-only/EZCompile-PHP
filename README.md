@@ -1,21 +1,29 @@
 # EZCompile-PHP
 
+## 
+
 ### The Easy way to compile and install PHP on MacOS, Windows, and Linux. Status: pre-release, installs PHP CLI (latest-7.1-latest-master[including 8.0-betaX] Version, MacOS and Debian ONLY) and can setup a docker application for PHP-7.4.9, Apache-2.4.38, and MySQL-8.0.21 combined) HEAVY DEVELOPMENT
+
+# 
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/one-and-only/EZCompile-PHP?color=yellow&include_prereleases&label=latest)
 
-# How to Install PHP CLI (_macOS and Debian ONLY_)
+## How to Install PHP CLI (_macOS and Debian ONLY_)
 
-### macOS:
+* * *
+
+### macOS
 
 1.  Open Terminal and navigate to `[GITHUB-REPO-DIR]/macos/CLI/` with `[GITHUB-REPO-DIR]` being the directory of this repository (`cd [GITHUB-REPO-DIR]/macos/CLI/`).
+
 2.  Execute the install script that is inside the above directory by typing `./install.sh`. This will install Homebrew if it not already installed, install all dependencies required for compiling the PHP CLI, compile the PHP CLI itself, test the build, and then install it. Do **_NOT_** run it with `sudo ./install.sh` even if you will be asked later on about your password. This is because Homebrew can't run as admin.
 
     -   You're able to choose the version of PHP you want to install between the latest releases of PHP 7.1, 7.2, 7.3, 7.4, 8.0-betaX, and the latest version of the master PHP branch.
     -   You will be prompted to choose a version at the beginning of the program. There are other prompts inside of the program, but those should be really self-explanatory.
+
 3.  After PHP CLI has been successfully installed, you can check that it has applied by executing `php -v`. This will show you the PHP CLI version along with the build date and other information. The build version and date is what you need to pay attention to make sure it installed correctly. You're done!
 
-### Debian:
+### Debian
 
 1.  Open Terminal and navigate to `[GITHUB-REPO-DIR]/debian/CLI/` with `[GITHUB-REPO-DIR]` being the directory of this repository (`cd [GITHUB-REPO-DIR]/debian/CLI/`).
 
@@ -26,9 +34,11 @@
 
 3.  After PHP CLI has been successfully installed, you can check that it has applied by executing `php -v`. This will show you the PHP CLI version along with the build date and other information. The build version and date is what you need to pay attention to make sure it installed correctly. You're done!
 
-# Installing the Docker Web Server Application (_All Major OSes_):
+## Installing the Docker Web Server Application (_All Major OSes_):
 
-## A. macOS (10.13+ [High Sierra+]):
+* * *
+
+## A. macOS (10.13 High Sierra+)
 
 1.  To install Docker Desktop by navigating to `[GITHUB-REPO-DIR]/macos/Docker/dockerDesktop/` with `[GITHUB-REPO-DIR]` being the directory of this repository (`cd [GITHUB-REPO-DIR]/macos/Docker/dockerDesktop/`).
 
@@ -94,7 +104,9 @@
 
 23. Coming Soon!
 
-# PLEASE NOTE
+## PLEASE NOTE
+
+* * *
 
 ### 1. Some PHP extensions may not be installed in all versions of the PHP CLI due to incompatibility or build errors. The PHP extensions that were removed from PHP 8 downwards are the following:
 
@@ -103,12 +115,14 @@
 -   latest-7.2: **_enchant, iconv, TIDY, GD, webp support, jpeg support, freetype, zip read/write support_**
 -   latest-7.1: **_enchant, iconv, TIDY, Argon2 Password Hashing, GD, webp support, jpeg support, freetype, sodium, zip read/write support_**
 
-### 2. Due to the increased complexity and massively increased user input required to the point where you might as well compile it yourself on Windows, support for this operating system has been temporarily (and possibly permanently) limited to only the Docker Application in this project's roadmap until further notice.
+### 2. Due to the increased complexity and massively increased user input required to the point where you might as well compile it yourself on Windows, support for this operating system has been temporarily (and possibly permanently) limited to only the Docker Application in this project's roadmap until further notice
 
-### 3. If you find any issues or ommisions, please open up an issue on GitHub.
+### 3. If you find any issues or ommisions, please open up an issue on GitHub
 
 * * *
 
-#### Psst...Disclaimer:
+#### Psst...Disclaimer
+
+* * *
 
 This product includes PHP software, freely available from <http://www.php.net/software/>
