@@ -9,6 +9,7 @@
 ### Installs: PHP CLI (latest-7.1-latest-master (including 8.0-betaX) Version, MacOS and Debian ONLY) and can setup a Docker Application for PHP-7.4.9, Apache-2.4.38, and MySQL-8.0.21 combined)
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/one-and-only/EZCompile-PHP?color=yellow&include_prereleases&label=latest)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/3e4760ea322048cdbb90652c6fbb8d9b)](https://www.codacy.com/manual/one-and-only/EZCompile-PHP?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=one-and-only/EZCompile-PHP&amp;utm_campaign=Badge_Grade)
 
 ## How to Install PHP CLI (_macOS and Debian ONLY_)
 
