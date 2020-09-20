@@ -2,7 +2,7 @@
 
 ## 
 
-### The Easy way to compile and install PHP on MacOS, Windows, and Linux.
+### The Easy way to compile and install PHP on MacOS, Windows, and Linux
 
 ### Status: pre-release, HEAVY DEVELOPMENT
 
@@ -36,7 +36,7 @@
 
 3.  After PHP CLI has been successfully installed, you can check that it has applied by executing `php -v`. This will show you the PHP CLI version along with the build date and other information. The build version and date is what you need to pay attention to make sure it installed correctly. You're done!
 
-## Installing the Docker Web Server Application (_All Major OSes_):
+## Installing the Docker Web Server Application (_All Major OSes_)
 
 * * *
 
@@ -59,7 +59,6 @@
     -   Accessing MySQL through PDO:
 
     1.  I would recommend a database connection file (I'll call it _dbconn.php_)
-
     2.  Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
 
     3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql8` inside of Terminal while the container is running.
