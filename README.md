@@ -51,62 +51,61 @@
 
 ## To Install and Run your Web Server
 
-1.  Choose your Web Server Software. You have a choice to run a full LAMP stack, only MySQL, or only PHP. You can choose between PHP 7.2, 7.3, 7.4, or 8.0-betaX and MySQL 5.6, 5.7, and 8.0
+3.  Choose your Web Server Software. You have a choice to run a full LAMP stack, only MySQL, or only PHP. You can choose between PHP 7.2, 7.3, 7.4, or 8.0-betaX and MySQL 5.6, 5.7, and 8.0
 
 ### Start Docker
 
-1.  Simply start Docker Desktop by launching it as a normal application. It is currently called `Docker.app`
+4.  Simply start Docker Desktop by launching it as a normal application. It is currently called `Docker.app`
 
 ### Start the Web Server
 
-2.  Navigate to your preferred MySQL Server Version directory by using `cd [GITHUB-REPO-DIR]/macos/Docker/dockerFiles/mysql-[SQLVER]` with `[SQLVER]` being either 5.6, 5.7, or 5.8 for the MySQL Server Version. If you are not planning to run MySQL, you can go to any of the three version directories.
+5.  Navigate to your preferred MySQL Server Version directory by using `cd [GITHUB-REPO-DIR]/macos/Docker/dockerFiles/mysql-[SQLVER]` with `[SQLVER]` being either 5.6, 5.7, or 5.8 for the MySQL Server Version. If you are not planning to run MySQL, you can go to any of the three version directories.
 
-3.  Now, go into the folder of your PHP version of choice by using `cd [GITHUB-REPO-DIR]/macos/Docker/dockerFiles/mysql-[SQLVER]/php-latest-[PHPVER]` with `[PHPVER]` being 7.2, 7.3, 7.4, or 8.0. This corresponds to the latest patch of your PHP version of choice. If you are only planning to run the MySQL Server, you can go into any PHP version directory.
+6.  Now, go into the folder of your PHP version of choice by using `cd [GITHUB-REPO-DIR]/macos/Docker/dockerFiles/mysql-[SQLVER]/php-latest-[PHPVER]` with `[PHPVER]` being 7.2, 7.3, 7.4, or 8.0. This corresponds to the latest patch of your PHP version of choice. If you are only planning to run the MySQL Server, you can go into any PHP version directory.
 
-4.  To run the server(s), you can execute `startLAMP.sh` for the LAMP stack, `startMySQL.sh` for just MySQL, or `startPHP.sh` for just PHP/Apache. All of the scripts will asks you for the folder location that it should use to store the files for your website and/or MySQL server, and then download the appropriate Docker Images for the server of choice. This folder location will need to already exist and needs to have proper read/write access by the terminal user of the current session. The download of the Docker Images is all automated (as is everything else).
-
-    -   Accessing MySQL through PDO:
-
-    1.  I would recommend a database connection file (I'll call it _dbconn.php_)
-    2.  Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
-    3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql<SQLVERID>`  with `<SQLVERID>` being _80_  for MySQL 8.0, etc. inside of a terminal while the container is running
-
-5.  To Stop the Docker Application, open a terminal and type `docker container stop [php<PHPVERID>] [mysql<SQLVERID>]` with `<PHPVERID>` being _74_ for php 7.4, etc. if you started a Web Server, and `<SQLVERID>` being _80_ for MySQL 8.0, etc. if you started a MySQL Server
-    ## B. Windows 10 (Build 1803+)
-
-6.  Navigate to the location of the Docker Desktop binary archives at `windows/dockerDesktop/`. 
-
-7.  Open the text file that contains the password for the archives and copy it.
-
-8.  Go back to the aforementioned folder above and double click, or execute, `dockerDesktopInstaller_.exe`.
-
-9.  When prompted, paste the password that you just copied into the text field and click OK. The archive should now start extracting.
-
-10. After the archive has been fully extracted, execute the output file by double-clicking on it. The installation should now begin.
-
-11. When prompted, restart your computer
-
-12. After the computer restart and Docker starts, it will prompt you to install the WSL2 linux kernel. Install it and restart docker when prompted.
-
-13. When docker has restarted, docker should be installed and available for use.
-
-14. Now that docker is installed, open PowerShell (**_NOT_** Command Prompt)
-
-15. Navigate to `[GITHUB-REPO-DIR]/windows/dockerFiles/`
-
-16. Once there, you can simply type `docker compose up`. This will make sure that PHP, all of its extensions, Apache, and MySQL are all installed properly. If you so choose, you can close the application using _CTRL_ + _C_ in the Terminal where the application is open. After the initial install, you can use `docker compose up -d`. This will run the application detached, meaning it will run in the background. You can stop the container
-
-17. All of your files used for a website will be stored under `[GITHUB-REPO-DIR]/windows/dockerFiles/php/`. You can make a simple _index.php_ file and whatever code you put in there will get processed by Apache. If you have an _index.php_ or _index.html_ file, you can access the website by typing `localhost` into your browser. Any other file name can be accessed from the browser by typing `localhost/[fileName.extension]` where `[filePrefix.extension]` is the full file name including the extension.
+7.  To run the server(s), you can execute `startLAMP.sh` for the LAMP stack, `startMySQL.sh` for just MySQL, or `startPHP.sh` for just PHP/Apache. All of the scripts will asks you for the folder location that it should use to store the files for your website and/or MySQL server, and then download the appropriate Docker Images for the server of choice. This folder location will need to already exist and needs to have proper read/write access by the terminal user of the current session. The download of the Docker Images is all automated (as is everything else).
 
     -   Accessing MySQL through PDO:
 
-    1.  I would recommend a database connection file (I'll call it _dbconn.php_)
-    2.  Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
-    3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql8` inside of PowerShell while the container is running.
+        1.  I would recommend a database connection file (I'll call it _dbconn.php_)
+        2.  Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
+        3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql<SQLVERID>`  with `<SQLVERID>` being _80_  for MySQL 8.0, etc. inside of a terminal while the container is running
 
-18. To Stop the Docker Application, go to the directory that your Docker Application resides in, and then type `docker compose stop`.
+8.  To stop the Docker Application, open a terminal and type `docker container stop [php<PHPVERID>] [mysql<SQLVERID>]` with `<PHPVERID>` being _74_ for php 7.4, etc. if you started a Web Server, and `<SQLVERID>` being _80_ for MySQL 8.0, etc. if you started a MySQL Server
 
-19. Done!
+## B. Windows 10 (Build 1803+)
+
+1.  Navigate to the location of the Docker Desktop binary archives at `windows/dockerDesktop/`. 
+
+2.  Open the text file that contains the password for the archives and copy it.
+
+3.  Go back to the aforementioned folder above and double click, or execute, `dockerDesktopInstaller_.exe`.
+
+4.  When prompted, paste the password that you just copied into the text field and click OK. The archive should now start extracting.
+
+5.  After the archive has been fully extracted, execute the output file by double-clicking on it. The installation should now begin.
+
+6.  When prompted, restart your computer
+
+7.  After the computer restart and Docker starts, it will prompt you to install the WSL2 linux kernel. Install it and restart docker when prompted.
+
+8.  When docker has restarted, docker should be installed and available for use.
+
+9.  Now that docker is installed, open PowerShell (**_NOT_** Command Prompt)
+
+10. Navigate to `[GITHUB-REPO-DIR]/windows/dockerFiles/`
+
+11. Once there, you can simply type `docker compose up`. This will make sure that PHP, all of its extensions, Apache, and MySQL are all installed properly. If you so choose, you can close the application using _CTRL_ + _C_ in the Terminal where the application is open. After the initial install, you can use `docker compose up -d`. This will run the application detached, meaning it will run in the background. You can stop the container
+
+12. All of your files used for a website will be stored under `[GITHUB-REPO-DIR]/windows/dockerFiles/php/`. You can make a simple _index.php_ file and whatever code you put in there will get processed by Apache. If you have an _index.php_ or _index.html_ file, you can access the website by typing `localhost` into your browser. Any other file name can be accessed from the browser by typing `localhost/[fileName.extension]` where `[filePrefix.extension]` is the full file name including the extension.
+
+    -   Accessing MySQL through PDO:
+
+        1.  I would recommend a database connection file (I'll call it _dbconn.php_)
+        2.  Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
+        3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql8` inside of PowerShell while the container is running.
+
+13. To stop the Docker Application, go to the directory that your Docker Application resides in, and then type `docker compose stop`.
 
     ## C. Debian-Based Linux Distributions (_Ubuntu_, _Debian_, _Pop!\_OS_, etc.)
 
@@ -118,29 +117,29 @@
 
     ## To Install and Run your Web Server
 
-    1.  Choose your Web Server Software. You have a choice to run a full LAMP stack, only MySQL, or only PHP. You can choose between PHP 7.2, 7.3, 7.4, or 8.0-betaX and MySQL 5.6, 5.7, and 8.0
+    3.  Choose your Web Server Software. You have a choice to run a full LAMP stack, only MySQL, or only PHP. You can choose between PHP 7.2, 7.3, 7.4, or 8.0-betaX and MySQL 5.6, 5.7, and 8.0
 
     ### Start Docker
 
-    1.  Navigate to `[GITHUB-REPO-DIR]debian/Docker/dockerd` with `[GITHUB-REPO-DIR]` being the directory of the repository (`cd [GITHUB-REPO-DIR]/debian/Docker/dockerd`)
+    4.  Navigate to `[GITHUB-REPO-DIR]debian/Docker/dockerd` with `[GITHUB-REPO-DIR]` being the directory of the repository (`cd [GITHUB-REPO-DIR]/debian/Docker/dockerd`)
 
-    2.  Execute `startDocker.sh` (`./startDocker.sh`) to start Docker and then press _CTRL_ + _C_ to break out of the window. _DON'T WORRY_. Docker will continue to run in the background.
+    5.  Execute `startDocker.sh` (`./startDocker.sh`) to start Docker and then press _CTRL_ + _C_ to break out of the window. _DON'T WORRY_. Docker will continue to run in the background.
 
     ### Start the Web Server
 
-    3.  Navigate to your preferred MySQL Server Version directory by using `cd [GITHUB-REPO-DIR]/debian/Docker/dockerFiles/mysql-[SQLVER]` with `[SQLVER]` being either 5.6, 5.7, or 5.8 for the MySQL Server Version. If you are not planning to run MySQL, you can go to any of the three version directories.
+    6.  Navigate to your preferred MySQL Server Version directory by using `cd [GITHUB-REPO-DIR]/debian/Docker/dockerFiles/mysql-[SQLVER]` with `[SQLVER]` being either 5.6, 5.7, or 5.8 for the MySQL Server Version. If you are not planning to run MySQL, you can go to any of the three version directories.
 
-    4.  Now, go into the folder of your PHP version of choice by using `cd [GITHUB-REPO-DIR]/debian/Docker/dockerFiles/mysql-[SQLVER]/php-latest-[PHPVER]` with `[PHPVER]` being 7.2, 7.3, 7.4, or 8.0. This corresponds to the latest patch of your PHP version of choice. If you are only planning to run the MySQL Server, you can go into any PHP version directory.
+    7.  Now, go into the folder of your PHP version of choice by using `cd [GITHUB-REPO-DIR]/debian/Docker/dockerFiles/mysql-[SQLVER]/php-latest-[PHPVER]` with `[PHPVER]` being 7.2, 7.3, 7.4, or 8.0. This corresponds to the latest patch of your PHP version of choice. If you are only planning to run the MySQL Server, you can go into any PHP version directory.
 
-    5.  To run the server(s), you can execute `startLAMP.sh` for the LAMP stack, `startMySQL.sh` for just MySQL, or `startPHP.sh` for just PHP/Apache. All of the scripts will asks you for the folder location that it should use to store the files for your website and/or MySQL server, and then download the appropriate Docker Images for the server of choice. This folder location will need to already exist and needs to have proper read/write access by the terminal user of the current session. The download of the Docker Images is all automated (as is everything else).
+    8.  To run the server(s), you can execute `startLAMP.sh` for the LAMP stack, `startMySQL.sh` for just MySQL, or `startPHP.sh` for just PHP/Apache. All of the scripts will asks you for the folder location that it should use to store the files for your website and/or MySQL server, and then download the appropriate Docker Images for the server of choice. This folder location will need to already exist and needs to have proper read/write access by the terminal user of the current session. The download of the Docker Images is all automated (as is everything else).
 
         -   Accessing MySQL through PDO:
 
-        1.  I would recommend a database connection file (I'll call it _dbconn.php_)
-        2.  Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
-        3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql<SQLVERID>`  with `<SQLVERID>` being _80_  for MySQL 8.0, etc. inside of a terminal while the container is running.
+            1.  I would recommend a database connection file (I'll call it _dbconn.php_)
+            2.  Information on how to setup the file can be found [here](https://phpdelusions.net/pdo). The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.
+            3.  To get the IP address of the MySQL container, just execute `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql<SQLVERID>`  with `<SQLVERID>` being _80_  for MySQL 8.0, etc. inside of a terminal while the container is running.
 
-20. To Stop the Docker Application, open a terminal and type `docker container stop [php<PHPVERID>] [mysql<SQLVERID>]` with `<PHPVERID>` being _74_ for php 7.4, etc. if you started a Web Server, and `<SQLVERID>` being _80_ for MySQL 8.0, etc. if you started a MySQL Server.
+    9.  To Stop the Docker Application, open a terminal and type `docker container stop [php<PHPVERID>] [mysql<SQLVERID>]` with `<PHPVERID>` being _74_ for php 7.4, etc. if you started a Web Server, and `<SQLVERID>` being _80_ for MySQL 8.0, etc. if you started a MySQL Server.
 
 ## PLEASE NOTE
 
