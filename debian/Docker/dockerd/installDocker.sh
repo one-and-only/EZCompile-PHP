@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get update && sudo apt-get upgrade
+sudo apt-get update && sudo apt-get upgrade -y || exit
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add || exit
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" || exit
 sudo apt-get update
