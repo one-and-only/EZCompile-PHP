@@ -26,5 +26,5 @@ if [ ! "$(sudo docker ps -q -f name=mysql80)" ]; then
         docker rm mysql80
     fi
     # run your container
-    sudo docker run -d -p 3306:3306 -p 33060:33060 --volume "$MYSQLFOLDERLOCATION":/var/lib/mysql --name mysql80 frostedflakez/php-mysql-webserver:0.9-beta.3-mysql-latest-8.0
+    sudo docker run -d -p 3306:3306 -p 33060:33060 --volume "$MYSQLFOLDERLOCATION":/var/lib/mysql --name mysql80 frostedflakez/php-mysql-webserver:mysql-latest-8.0
 fi
