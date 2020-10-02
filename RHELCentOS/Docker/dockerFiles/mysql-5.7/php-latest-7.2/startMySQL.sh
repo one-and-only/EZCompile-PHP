@@ -25,5 +25,5 @@ if [ ! "$(sudo docker ps -q -f name=mysql57)" ]; then
         sudo docker rm mysql57
     fi
     # run your container
-    sudo docker run -d -p 3306:3306 -p 33060:33060 --volume "$MYSQLFOLDERLOCATION":/var/lib/mysql --name mysql57 frostedflakez/php-mysql-webserver:0.9-beta.3-mysql-latest-5.7
+    sudo docker run -d -p 3306:3306 -p 33060:33060 --volume "$MYSQLFOLDERLOCATION":/var/lib/mysql --name mysql57 frostedflakez/php-mysql-webserver:mysql-latest-5.7
 fi

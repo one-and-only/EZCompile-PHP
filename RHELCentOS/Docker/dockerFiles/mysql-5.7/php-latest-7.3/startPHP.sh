@@ -25,5 +25,5 @@ if [ ! "$(sudo docker ps -q -f name=php73)" ]; then
         sudo docker rm php73
     fi
     # run your container
-    sudo docker run -d -p 80:80 -p 443:443 --volume "$APACHEFOLDERLOCATION":/var/www/html/ --name php73 frostedflakez/php-mysql-webserver:0.9-beta.3-php-latest-7.3
+    sudo docker run -d -p 80:80 -p 443:443 --volume "$APACHEFOLDERLOCATION":/var/www/html/ --name php73 frostedflakez/php-mysql-webserver:php-latest-7.3
 fi
