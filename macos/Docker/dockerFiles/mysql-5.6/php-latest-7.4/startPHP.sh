@@ -25,5 +25,5 @@ if [ ! "$(docker ps -q -f name=php74)" ]; then
         docker rm php74
     fi
     # run your container
-    docker run -d -p 80:80 -p 443:443 --volume "$APACHEFOLDERLOCATION":/var/www/html/ --name php74 frostedflakez/php-mysql-webserver:0.9-beta.2-php-latest-7.4
+    docker run -d -p 80:80 -p 443:443 --volume "$APACHEFOLDERLOCATION":/var/www/html/ --name php74 frostedflakez/php-mysql-webserver:php-latest-7.4
 fi

@@ -38,7 +38,7 @@ if [ ! "$(docker ps -q -f name=php73)" ]; then
         docker rm php73
     fi
     # run your container
-    docker run -d -p 80:80 -p 443:443 --volume "$APACHEFOLDERLOCATION":/var/www/html/ --name php73 frostedflakez/php-mysql-webserver:0.9-beta.3-php-latest-7.3
+    docker run -d -p 80:80 -p 443:443 --volume "$APACHEFOLDERLOCATION":/var/www/html/ --name php73 frostedflakez/php-mysql-webserver:php-latest-7.3
 fi
 
 if [ ! "$(docker ps -q -f name=mysql57)" ]; then
@@ -47,5 +47,5 @@ if [ ! "$(docker ps -q -f name=mysql57)" ]; then
         docker rm mysql57
     fi
     # run your container
-    docker run -d -p 3306:3306 -p 33060:33060 --volume "$MYSQLFOLDERLOCATION":/var/lib/mysql --name mysql57 frostedflakez/php-mysql-webserver:0.9-beta.3-mysql-latest-5.7
+    docker run -d -p 3306:3306 -p 33060:33060 --volume "$MYSQLFOLDERLOCATION":/var/lib/mysql --name mysql57 frostedflakez/php-mysql-webserver:mysql-latest-5.7
 fi

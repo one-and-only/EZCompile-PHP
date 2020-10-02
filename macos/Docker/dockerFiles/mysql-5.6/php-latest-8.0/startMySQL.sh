@@ -25,5 +25,5 @@ if [ ! "$(docker ps -q -f name=mysql56)" ]; then
         docker rm mysql56
     fi
     # run your container
-    docker run -d -p 3306:3306 -p 33060:33060 --volume "$MYSQLFOLDERLOCATION":/var/lib/mysql --name mysql56 frostedflakez/php-mysql-webserver:0.9-beta.3-mysql-latest-5.6
+    docker run -d -p 3306:3306 -p 33060:33060 --volume "$MYSQLFOLDERLOCATION":/var/lib/mysql --name mysql56 frostedflakez/php-mysql-webserver:mysql-latest-5.6
 fi
