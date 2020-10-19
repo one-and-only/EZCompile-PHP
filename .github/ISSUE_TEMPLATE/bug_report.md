@@ -1,9 +1,9 @@
 ---
-name: Issue Report
-about: Create an Issue Report to Help Us Resolve Your Problem.
-title: "[ISSUE]"
-labels: issue
-assignees: one-and-only
+name: Bug report
+about: Create a report to help us improve
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
