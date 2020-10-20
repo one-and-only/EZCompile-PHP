@@ -1,16 +1,11 @@
-* * *
-
+---
 name: Issue Report
-
-about: File Any Issues That Are Not Perceived as Bugs
-
-title: 'Issue: '
-
+about: Create an Issue Report to Help Us Resolve Your Problem.
+title: "[ISSUE]"
 labels: issue
-
 assignees: one-and-only
 
-* * *
+---
 
 ## Describe the bug
 
