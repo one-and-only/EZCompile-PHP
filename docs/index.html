@@ -30,9 +30,10 @@ code {
 .title {
     background-color: #68e0cf; /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom right, #68e0cf, #209cfd);
+    border: 1px solid lightGrey;
     color: white;
     text-align: center;
-    padding-top: 5vh;
+    padding-top: 2vh;
     padding-bottom: 5vh;
     max-width: 75vw;
     border-radius: 30px;
@@ -44,7 +45,8 @@ body {
 }
 .btn-signature-main {
 	background-color: #209cfd;
-    color: white;
+  color: white;
+  border-radius: 15px;
 }
 .btn-signature-main:hover {
     background-color: #73ffec;
@@ -58,7 +60,14 @@ body {
     background-image: linear-gradient(to bottom right, #47bee6, #209cfd);
     color: white;
 }
-
+.prettyLink {
+  color: #73ffec;
+  text-decoration: none;
+}
+.prettyLink:hover {
+  color: black;
+  text-decoration: none;
+}
 @media only screen and (max-width: 1300px) {
     .title {
         max-width: 90vw;
@@ -67,7 +76,6 @@ body {
 		width: 90vw !important;
 	}
 }
-
 @media only screen and (max-width: 1000px) {
     .title {
         max-width: 95vw;
@@ -79,27 +87,229 @@ body {
 </style>
 </head>
 <body>
-  <!-- Jumbotron (title) -->
-  <div class="jumbotron title">
-    <h1 class="display-4">EZCompile PHP</h1>
-    <p class="lead">The Easy way to compile and install PHP and MySQL on MacOS, Windows, and Linux.</p>
-    <hr class="my-4">
-    <p>Check out our repository full of our open-source code and our latest release:</p>
-    <a class="btn btn-signature-main btn-lg" href="https://github.com/one-and-only/EZCompile-PHP" role="button">Repository</a>
-    <a class="btn btn-signature-main btn-lg" href="https://github.com/one-and-only/EZCompile-PHP/releases/latest" role="button">Latest Release</a>
+  <!-- Jumbotron (Title) -->
+<div class="jumbotron title">
+  <h1 class="display-3">EZCompile PHP</h1>
+  <p class="lead">The Easy way to compile and install PHP and MySQL on MacOS, Windows, and Linux.</p>
+  <hr class="my-4">
+  <p>Check out our repository full of our open-source code and our latest release:</p>
+  <a class="btn btn-signature-main btn-lg" href="https://github.com/one-and-only/EZCompile-PHP" role="button">Repository</a>
+  <a class="btn btn-signature-main btn-lg" href="https://github.com/one-and-only/EZCompile-PHP/releases/latest" role="button">Latest Release</a>
 </div>
 
-<!--  -->
+<!-- Main Card Body -->
 <div style="padding-top: 1vh;">
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title" align="center" style="font-size: 30px;">Using EZCompile PHP</h5>
-    <p class="card-text" align="left">Some quick example text to build on the card title and make up the bulk of the card's content. <code>cd /path/to/directory/</code> for some code!</p>
+    <p class="card-text" align="left">
+      <!-- Converted Markdown -->
+      <h2 id="how-to-install-php-cli-macos-and-debian-only">How to Install PHP CLI (<em>macOS and Debian ONLY</em>)</h2>
+      <hr>
+      <h3 id="macos">macOS</h3>
+      <ol>
+      <li><p>Open Terminal and navigate to <code>[GITHUB-REPO-DIR]/macos/CLI/</code> with <code>[GITHUB-REPO-DIR]</code> being the directory of this repository (<code>cd [GITHUB-REPO-DIR]/macos/CLI/</code>).</p>
+      </li>
+      <li><p>Execute the install script that is inside the above directory by typing <code>./install.sh</code>. This will install Homebrew if it not already installed, install all dependencies required for compiling the PHP CLI, compile the PHP CLI itself, test the build, and then install it. Do <strong><em>NOT</em></strong> run it with <code>sudo ./install.sh</code> even if you will be asked later on about your password. This is because Homebrew can&#39;t run as admin.</p>
+      <ul>
+      <li>You&#39;re able to choose the version of PHP you want to install between the latest releases of PHP 7.1, 7.2, 7.3, 7.4, 8.0-betaX, and the latest version of the master PHP branch.</li>
+      <li>You will be prompted to choose a version at the beginning of the program. There are other prompts inside of the program, but those should be really self-explanatory.</li>
+      </ul>
+      </li>
+      <li><p>After PHP CLI has been successfully installed, you can check that it has applied by executing <code>php -v</code>. This will show you the PHP CLI version along with the build date and other information. The build version and date is what you need to pay attention to make sure it installed correctly. You&#39;re done!</p>
+      </li>
+      </ol>
+      <h3 id="debian">Debian</h3>
+      <ol>
+      <li><p>Open Terminal and navigate to <code>[GITHUB-REPO-DIR]/debian/CLI/</code> with <code>[GITHUB-REPO-DIR]</code> being the directory of this repository (<code>cd [GITHUB-REPO-DIR]/debian/CLI/</code>).</p>
+      </li>
+      <li><p>Execute the install script that is inside the above directory by typing <code>./install.sh</code>. This will install all dependencies required to compile the PHP CLI using the Advanced Package Tool (APT), compile the PHP CLI itself, test the build, and then install it. If you so wish, you may run with <code>sudo ./install.sh</code> unlike macOS in order to get asked for your admin password once at the start, so you can leave it unattended longer.</p>
+      <ul>
+      <li>You&#39;re able to choose the version of PHP you want to install between the latest releases of PHP 7.1, 7.2, 7.3, 7.4, 8.0-betaX, and the latest version of the master PHP branch.</li>
+      <li>You will be prompted to choose a version at the beginning of the program. There are other prompts inside of the program, but those should be really self-explanatory.</li>
+      </ul>
+      </li>
+      <li><p>After PHP CLI has been successfully installed, you can check that it has applied by executing <code>php -v</code>. This will show you the PHP CLI version along with the build date and other information. The build version and date is what you need to pay attention to make sure it installed correctly. You&#39;re done!</p>
+      </li>
+      </ol>
+      <h2 id="installing-the-docker-web-server-application-all-major-oses">Installing the Docker Web Server Application (<em>All Major OSes</em>)</h2>
+      <hr>
+      <h2 id="a-macos-1013-high-sierra">A. macOS (10.13 High Sierra+)</h2>
+      <h2 id="to-install-docker">To install Docker</h2>
+      <ol>
+      <li><p>Navigate to <code>[GITHUB-REPO-DIR]/macos/Docker/dockerDesktop</code> with <code>[GITHUB-REPO-DIR]</code> being the directory of the repository (<code>cd [GITHUB-REPO-DIR]/debian/Docker/dockerd</code>)</p>
+      </li>
+      <li><p>execute the install script <code>installDockerDesktop.sh</code> (<code>./installDockerDesktop.sh</code>). Enter your password when prompted, and wait for it to finish. This will install Docker Desktop and all dependencies. It will <em>NOT</em> overwrite a current install if it is found, but instead will ask you if you want it removed.</p>
+      </li>
+      </ol>
+      <h2 id="to-install-and-run-your-web-server">To Install and Run your Web Server</h2>
+      <ol start="3">
+      <li>Choose your Web Server Software. You have a choice to run a full LAMP stack, only MySQL, or only PHP. You can choose between PHP 7.2, 7.3, 7.4, or 8.0-betaX and MySQL 5.6, 5.7, and 8.0</li>
+      </ol>
+      <h3 id="start-docker">Start Docker</h3>
+      <ol start="4">
+      <li>Simply start Docker Desktop by launching it as a normal application. It is currently called <code>Docker.app</code></li>
+      </ol>
+      <h3 id="start-the-web-server">Start the Web Server</h3>
+      <ol start="5">
+      <li><p>Navigate to your preferred MySQL Server Version directory by using <code>cd [GITHUB-REPO-DIR]/macos/Docker/dockerFiles/mysql-[SQLVER]</code> with <code>[SQLVER]</code> being either 5.6, 5.7, or 5.8 for the MySQL Server Version. If you are not planning to run MySQL, you can go to any of the three version directories.</p>
+      </li>
+      <li><p>Now, go into the folder of your PHP version of choice by using <code>cd [GITHUB-REPO-DIR]/macos/Docker/dockerFiles/mysql-[SQLVER]/php-latest-[PHPVER]</code> with <code>[PHPVER]</code> being 7.2, 7.3, 7.4, or 8.0. This corresponds to the latest patch of your PHP version of choice. If you are only planning to run the MySQL Server, you can go into any PHP version directory.</p>
+      </li>
+      <li><p>To run the server(s), you can execute <code>startLAMP.sh</code> for the LAMP stack, <code>startMySQL.sh</code> for just MySQL, or <code>startPHP.sh</code> for just PHP/Apache. All of the scripts will asks you for the folder location that it should use to store the files for your website and/or MySQL server, and then download the appropriate Docker Images for the server of choice. This folder location will need to already exist and needs to have proper read/write access by the terminal user of the current session. The download of the Docker Images is all automated (as is everything else).</p>
+      <ul>
+      <li><p>Accessing MySQL through PDO:</p>
+      <ol>
+      <li>I would recommend a database connection file (I&#39;ll call it <em>dbconn.php</em>)</li>
+      <li>Information on how to setup the file can be found at <a href="https://phpdelusions.net/pdo" class="prettyLink"><i>Treating PHP Delusions</i></a>. The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.</li>
+      <li>To get the IP address of the MySQL container, just execute <code>docker inspect -f &#39;{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39; mysql&lt;SQLVERID&gt;</code>  with <code>&lt;SQLVERID&gt;</code> being <em>80</em>  for MySQL 8.0, etc. inside of a terminal while the container is running</li>
+      </ol>
+      </li>
+      </ul>
+      </li>
+      <li><p>To stop the Docker Application, open a terminal and type <code>docker container stop [php&lt;PHPVERID&gt;] [mysql&lt;SQLVERID&gt;]</code> with <code>&lt;PHPVERID&gt;</code> being <em>74</em> for php 7.4, etc. if you started a Web Server, and <code>&lt;SQLVERID&gt;</code> being <em>80</em> for MySQL 8.0, etc. if you started a MySQL Server</p>
+      </li>
+      </ol>
+      <h2 id="b-windows-10-build-1803">B. Windows 10 (Build 1803+)</h2>
+      <ol>
+      <li><p>Navigate to the location of the Docker Desktop binary archives at <code>windows/dockerDesktop/</code>. </p>
+      </li>
+      <li><p>Open the text file that contains the password for the archives and copy it.</p>
+      </li>
+      <li><p>Go back to the aforementioned folder above and double click, or execute, <code>dockerDesktopInstaller_.exe</code>.</p>
+      </li>
+      <li><p>When prompted, paste the password that you just copied into the text field and click OK. The archive should now start extracting.</p>
+      </li>
+      <li><p>After the archive has been fully extracted, execute the output file by double-clicking on it. The installation should now begin.</p>
+      </li>
+      <li><p>When prompted, restart your computer</p>
+      </li>
+      <li><p>After the computer restart and Docker starts, it will prompt you to install the WSL2 linux kernel. Install it and restart docker when prompted.</p>
+      </li>
+      <li><p>When docker has restarted, docker should be installed and available for use.</p>
+      </li>
+      <li><p>Now that docker is installed, open PowerShell (<strong><em>NOT</em></strong> Command Prompt)</p>
+      </li>
+      <li><p>Navigate to <code>[GITHUB-REPO-DIR]/windows/dockerFiles/</code></p>
+      </li>
+      <li><p>Once there, you can simply type <code>docker compose up</code>. This will make sure that PHP, all of its extensions, Apache, and MySQL are all installed properly. If you so choose, you can close the application using <em>CTRL</em> + <em>C</em> in the Terminal where the application is open. After the initial install, you can use <code>docker compose up -d</code>. This will run the application detached, meaning it will run in the background. You can stop the container</p>
+      </li>
+      <li><p>All of your files used for a website will be stored under <code>[GITHUB-REPO-DIR]/windows/dockerFiles/php/</code>. You can make a simple <em>index.php</em> file and whatever code you put in there will get processed by Apache. If you have an <em>index.php</em> or <em>index.html</em> file, you can access the website by typing <code>localhost</code> into your browser. Any other file name can be accessed from the browser by typing <code>localhost/[fileName.extension]</code> where <code>[filePrefix.extension]</code> is the full file name including the extension.</p>
+      <ul>
+      <li><p>Accessing MySQL through PDO:</p>
+      <ol>
+      <li>I would recommend a database connection file (I&#39;ll call it <em>dbconn.php</em>)</li>
+      <li>Information on how to setup the file can be found at <a href="https://phpdelusions.net/pdo" class="prettyLink"><i>Treating PHP Delusions</i></a>. The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.</li>
+      <li>To get the IP address of the MySQL container, just execute <code>docker inspect -f &#39;{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39; mysql8</code> inside of PowerShell while the container is running.</li>
+      </ol>
+      </li>
+      </ul>
+      </li>
+      <li><p>To stop the Docker Application, go to the directory that your Docker Application resides in, and then type <code>docker compose stop</code>.</p>
+      <h2 id="c-debian-based-linux-distributions-ubuntu-debian-pop_os-etc">C. Debian-Based Linux Distributions (<em>Ubuntu</em>, <em>Debian</em>, <em>Pop!_OS</em>, etc.)</h2>
+      <h2 id="to-install-docker-1">To install Docker</h2>
+      <ol>
+      <li><p>Navigate to <code>[GITHUB-REPO-DIR]/debian/Docker/dockerd</code> with <code>[GITHUB-REPO-DIR]</code> being the directory of the repository (<code>cd [GITHUB-REPO-DIR]/debian/Docker/dockerd</code>)</p>
+      </li>
+      <li><p>execute the install script <code>installDocker.sh</code> (<code>./installDocker.sh</code>). Enter your password when prompted, and wait for it to finish. This will install Docker and all dependencies</p>
+      </li>
+      </ol>
+      <h2 id="to-install-and-run-your-web-server-1">To Install and Run your Web Server</h2>
+      <ol start="3">
+      <li>Choose your Web Server Software. You have a choice to run a full LAMP stack, only MySQL, or only PHP. You can choose between PHP 7.2, 7.3, 7.4, or 8.0-betaX and MySQL 5.6, 5.7, and 8.0</li>
+      </ol>
+      <h3 id="start-docker-1">Start Docker</h3>
+      <ol start="4">
+      <li><p>Navigate to <code>[GITHUB-REPO-DIR]debian/Docker/dockerd</code> with <code>[GITHUB-REPO-DIR]</code> being the directory of the repository (<code>cd [GITHUB-REPO-DIR]/debian/Docker/dockerd</code>)</p>
+      </li>
+      <li><p>Execute <code>startDocker.sh</code> (<code>./startDocker.sh</code>) to start Docker and then press <em>CTRL</em> + <em>C</em> to break out of the window. <em>DON&#39;T WORRY</em>. Docker will continue to run in the background.</p>
+      </li>
+      </ol>
+      <h3 id="start-the-web-server-1">Start the Web Server</h3>
+      <ol start="6">
+      <li><p>Navigate to your preferred MySQL Server Version directory by using <code>cd [GITHUB-REPO-DIR]/debian/Docker/dockerFiles/mysql-[SQLVER]</code> with <code>[SQLVER]</code> being either 5.6, 5.7, or 5.8 for the MySQL Server Version. If you are not planning to run MySQL, you can go to any of the three version directories.</p>
+      </li>
+      <li><p>Now, go into the folder of your PHP version of choice by using <code>cd [GITHUB-REPO-DIR]/debian/Docker/dockerFiles/mysql-[SQLVER]/php-latest-[PHPVER]</code> with <code>[PHPVER]</code> being 7.2, 7.3, 7.4, or 8.0. This corresponds to the latest patch of your PHP version of choice. If you are only planning to run the MySQL Server, you can go into any PHP version directory.</p>
+      </li>
+      <li><p>To run the server(s), you can execute <code>startLAMP.sh</code> for the LAMP stack, <code>startMySQL.sh</code> for just MySQL, or <code>startPHP.sh</code> for just PHP/Apache. All of the scripts will asks you for the folder location that it should use to store the files for your website and/or MySQL server, and then download the appropriate Docker Images for the server of choice. This folder location will need to already exist and needs to have proper read/write access by the terminal user of the current session. The download of the Docker Images is all automated (as is everything else).</p>
+      <ul>
+      <li><p>Accessing MySQL through PDO:</p>
+      <ol>
+      <li>I would recommend a database connection file (I&#39;ll call it <em>dbconn.php</em>)</li>
+      <li>Information on how to setup the file can be found at <a href="https://phpdelusions.net/pdo" class="prettyLink"><i>Treating PHP Delusions</i></a>. The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.</li>
+      <li>To get the IP address of the MySQL container, just execute <code>docker inspect -f &#39;{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39; mysql&lt;SQLVERID&gt;</code>  with <code>&lt;SQLVERID&gt;</code> being <em>80</em>  for MySQL 8.0, etc. inside of a terminal while the container is running.</li>
+      </ol>
+      </li>
+      </ul>
+      </li>
+      <li><p>To Stop the Docker Application, open a terminal and type <code>docker container stop [php&lt;PHPVERID&gt;] [mysql&lt;SQLVERID&gt;]</code> with <code>&lt;PHPVERID&gt;</code> being <em>74</em> for php 7.4, etc. if you started a Web Server, and <code>&lt;SQLVERID&gt;</code> being <em>80</em> for MySQL 8.0, etc. if you started a MySQL Server.</p>
+      </li>
+      </ol>
+      <h2 id="d-rhel-and-centos">D. RHEL and CentOS</h2>
+      <h2 id="to-install-docker-2">To install Docker</h2>
+      <ol>
+      <li><p>Navigate to <code>[GITHUB-REPO-DIR]/RHELCentOS/Docker/dockerd</code> with <code>[GITHUB-REPO-DIR]</code> being the directory of the repository (<code>cd [GITHUB-REPO-DIR]/RHELCentOS/Docker/dockerd</code>)</p>
+      </li>
+      <li><p>execute the install script <code>installDocker.sh</code> (<code>./installDocker.sh</code>). Enter your password when prompted, and wait for it to finish. This will install Docker and all dependencies</p>
+      </li>
+      </ol>
+      <h2 id="to-install-and-run-your-web-server-2">To Install and Run your Web Server</h2>
+      <ol start="3">
+      <li>Choose your Web Server Software. You have a choice to run a full LAMP stack, only MySQL, or only PHP. You can choose between PHP 7.2, 7.3, 7.4, or 8.0-betaX and MySQL 5.6, 5.7, and 8.0</li>
+      </ol>
+      <h3 id="start-docker-2">Start Docker</h3>
+      <ol start="4">
+      <li><p>Navigate to <code>[GITHUB-REPO-DIR]RHELCentOS/Docker/dockerd</code> with <code>[GITHUB-REPO-DIR]</code> being the directory of the repository (<code>cd [GITHUB-REPO-DIR]/RHELCentOS/Docker/dockerd</code>)</p>
+      </li>
+      <li><p>Execute <code>startDocker.sh</code> (<code>./startDocker.sh</code>) to start Docker and then press <em>CTRL</em> + <em>C</em> to break out of the window. <em>DON&#39;T WORRY</em>. Docker will continue to run in the background.</p>
+      </li>
+      </ol>
+      <h3 id="start-the-web-server-2">Start the Web Server</h3>
+      <ol start="6">
+      <li><p>Navigate to your preferred MySQL Server Version directory by using <code>cd [GITHUB-REPO-DIR]/RHELCentOS/Docker/dockerFiles/mysql-[SQLVER]</code> with <code>[SQLVER]</code> being either 5.6, 5.7, or 5.8 for the MySQL Server Version. If you are not planning to run MySQL, you can go to any of the three version directories.</p>
+      </li>
+      <li><p>Now, go into the folder of your PHP version of choice by using <code>cd [GITHUB-REPO-DIR]/RHELCentOS/Docker/dockerFiles/mysql-[SQLVER]/php-latest-[PHPVER]</code> with <code>[PHPVER]</code> being 7.2, 7.3, 7.4, or 8.0. This corresponds to the latest patch of your PHP version of choice. If you are only planning to run the MySQL Server, you can go into any PHP version directory.</p>
+      </li>
+      <li><p>To run the server(s), you can execute <code>startLAMP.sh</code> for the LAMP stack, <code>startMySQL.sh</code> for just MySQL, or <code>startPHP.sh</code> for just PHP/Apache. All of the scripts will asks you for the folder location that it should use to store the files for your website and/or MySQL server, and then download the appropriate Docker Images for the server of choice. This folder location will need to already exist and needs to have proper read/write access by the terminal user of the current session. The download of the Docker Images is all automated (as is everything else).</p>
+      <ul>
+      <li><p>Accessing MySQL through PDO:</p>
+      <ol>
+      <li>I would recommend a database connection file (I&#39;ll call it <em>dbconn.php</em>)</li>
+      <li>Information on how to setup the file can be found at <a href="https://phpdelusions.net/pdo" class="prettyLink"><i>Treating PHP Delusions</i></a>. The one thing to remember is that you will need to replace host with the IP address of the Docker Container of MySQL.</li>
+      <li>To get the IP address of the MySQL container, just execute <code>docker inspect -f &#39;{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39; mysql&lt;SQLVERID&gt;</code>  with <code>&lt;SQLVERID&gt;</code> being <em>80</em>  for MySQL 8.0, etc. inside of a terminal while the container is running.</li>
+      </ol>
+      </li>
+      </ul>
+      </li>
+      <li><p>To Stop the Docker Application, open a terminal and type <code>docker container stop [php&lt;PHPVERID&gt;] [mysql&lt;SQLVERID&gt;]</code> with <code>&lt;PHPVERID&gt;</code> being <em>74</em> for php 7.4, etc. if you started a Web Server, and <code>&lt;SQLVERID&gt;</code> being <em>80</em> for MySQL 8.0, etc. if you started a MySQL Server.</p>
+      </li>
+      </ol>
+      </li>
+      </ol>
+      <h2 id="please-note">PLEASE NOTE</h2>
+      <hr>
+      <h3 id="1-some-php-extensions-may-not-be-installed-in-all-versions-of-the-php-cli-due-to-incompatibility-or-build-errors-the-php-extensions-that-were-removed-from-php-8-downwards-are-the-following">1. Some PHP extensions may not be installed in all versions of the PHP CLI due to incompatibility or build errors. The PHP extensions that were removed from PHP 8 downwards are the following</h3>
+      <ul>
+      <li>latest-7.4: <strong><em>enchant</em></strong></li>
+      <li>latest-7.3: <strong><em>enchant, iconv, TIDY</em></strong></li>
+      <li>latest-7.2: <strong><em>enchant, iconv, TIDY, GD, webp support, jpeg support, freetype, zip read/write support</em></strong></li>
+      <li>latest-7.1: <strong><em>enchant, iconv, TIDY, Argon2 Password Hashing, GD, webp support, jpeg support, freetype, sodium, zip read/write support</em></strong></li>
+      </ul>
+      <h3 id="2-due-to-the-increased-complexity-and-massively-increased-user-input-required-to-the-point-where-you-might-as-well-compile-it-yourself-on-windows-support-for-this-operating-system-has-been-temporarily-and-possibly-permanently-limited-to-only-the-docker-application-in-this-projects-roadmap-until-further-notice">2. Due to the increased complexity and massively increased user input required to the point where you might as well compile it yourself on Windows, support for this operating system has been temporarily (and possibly permanently) limited to only the Docker Application in this project&#39;s roadmap until further notice</h3>
+      <h3 id="3-if-you-find-any-issues-or-ommisions-please-open-up-an-issue-on-github">3. If you find any issues or ommisions, please <a href="https://github.com/one-and-only/EZCompile-PHP/issues" class="prettyLink">open up an issue</a></h3>
+      <hr>
+      <h4 id="psstdisclaimer">Psst...Disclaimer</h4>
+      <hr>
+      <p>This product includes PHP software, freely available from <a href="http://www.php.net/software/" class="prettyLink">http://www.php.net/software/</a></p>
+      <!-- END Converted Markdown -->
+    </p>
     <div style="width: auto; margin: auto; text-align: center;">
-    <a href="#" class="btn btn-signature-main" style="font-size: 20px;">Still Stuck?</a>
+    <a href="https://github.com/one-and-only/EZCompile-PHP/issues" class="btn btn-signature-main" style="font-size: 30px;">Still Stuck?</a>
     </div>
   </div>
 </div>
+</div>
+<div style="padding-bottom: 4vh;">
 </div>
 </body>
 </html>
